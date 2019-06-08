@@ -9,6 +9,10 @@ const collections = {
         path: 'https://tonybai.com/'
       },
       {
+        title: '阮一峰的网络日志',
+        path: 'http://www.ruanyifeng.com'
+      },
+      {
         title: 'Dave Cheney',
         path: 'https://dave.cheney.net'
       },

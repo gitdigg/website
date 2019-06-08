@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" height="500px" width="500px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500"><!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+ <title>logo-square</title>
+ <desc>Created with Sketch.</desc>
+ <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage" fill="none">
+  <g id="logo-square" sketch:type="MSArtboardGroup">
+   <g id="logo-no-bg" transform="translate(2 19)" sketch:type="MSLayerGroup">
+    <g id="Page-1" sketch:type="MSShapeGroup">
+     <g id="gitlab_logo">
+      <g id="g10" transform="translate(248 228.83) scale(1 -1) translate(-248 -228.5)">
+       <g id="g16">
+        <g id="g18-Clipped">
+         <g id="g18">
+          <g id="Group" transform="translate(.66666 .66666)">
+           <g id="g44" fill="#FC6D26" transform="translate(0.532 .77493)">
+            <path id="path46" d="m492 194.67l-27.56 84.81-54.62 168.1c-2.81 8.65-15.04 8.65-17.85 0l-54.62-168.1h-181.37l-54.62 168.1c-2.807 8.65-15.043 8.65-17.853 0l-54.618-168.1-27.557-84.81c-2.5147-7.74 0.24-16.21 6.82-21l238.52-173.28 238.51 173.28c6.58 4.79 9.33 13.26 6.82 21"/>
+           </g>
+           <g id="g48" fill="#E24329" transform="translate(156.2 1.1603)">
+            <path id="path50" d="m91 0l90.68 279.1h-181.36l90.68-279.1z"/>
+           </g>
+           <g id="g56" fill="#FC6D26" transform="translate(28.531 1.1608)">
+            <path id="path58" d="m218.67 0l-90.69 279.09h-127.09l217.78-279.09z"/>
+           </g>
+           <g id="g64" fill="#FCA326" transform="translate(.088533 .25587)">
+            <path id="path66" d="m29.333 280l-27.558-84.81c-2.5137-7.74 0.2397-16.22 6.821-21l238.51-173.28-217.78 279.09h0.003z"/>
+           </g>
+           <g id="g72" fill="#E24329" transform="translate(29.422 280.26)">
+            <path id="path74" d="m0 0h127.09l-54.617 168.1c-2.81 8.65-15.046 8.65-17.856 0l-54.617-168.1z"/>
+           </g>
+           <g id="g76" fill="#FC6D26" transform="translate(247.2 1.1608)">
+            <path id="path78" d="m0 0l90.684 279.09h127.1l-217.78-279.09z"/>
+           </g>
+           <g id="g80" fill="#FCA326" transform="translate(246.31 .25587)">
+            <path id="path82" d="m218.67 280l27.56-84.81c2.51-7.74-0.24-16.22-6.83-21l-238.51-173.28 217.78 279.09z"/>
+           </g>
+           <g id="g84" fill="#E24329" transform="translate(336.97 280.26)">
+            <path id="path86" d="m128 0h-127.09l54.617 168.1c2.81 8.65 15.046 8.65 17.856 0l54.617-168.1z"/>
+           </g>
+          </g>
+         </g>
+        </g>
+       </g>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

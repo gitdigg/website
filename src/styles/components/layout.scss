@@ -85,19 +85,55 @@
 }
 
 .callouts {
-  display: none;
+  display: flex;  
+  flex-flow: column nowrap;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; 
+  margin-right: 20px; 
+}
+
+a.article-callout {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  color: $font-color;
+  font-weight: 500;
+  border: none !important;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 1.25rem;
+  &:hover,
+  &:active,
+  &:focus {
+    color: #111;
+    background: white;
+    box-shadow: $box-shadow;
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+    max-width: 50px;
+    margin: 0 1.5rem 0 0;
+  }
 }
 
 @include small-breakpoint {
   .callouts {
     display: flex;  
-    justify-content: flex-start;  
-    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
 
   .item {
-    flex-direction: column;
-    margin-right: 40px;    
+    display: flex;
+    margin-left: 20px; 
+    margin-right: 20px; 
   }
 
   a.article-callout {

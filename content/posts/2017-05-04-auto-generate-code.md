@@ -7,7 +7,7 @@ slug: auto-generate-code
 author: JayL
 categories:
   - go
-  - micro
+  - microservice
   - Popular
 tags:
   - code generation

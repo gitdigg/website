@@ -1,5 +1,6 @@
 website
 ===
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b1ad05fe-7e0e-433e-a7d2-516ef31844df/deploy-status)](https://app.netlify.com/sites/elastic-johnson-b22bde/deploys)
 
 Personal website running on Gatsby, React, and Node.js. Fork from [taniarascia.com](https://github.com/taniarascia/taniarascia.com).
 

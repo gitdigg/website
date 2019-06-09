@@ -4,13 +4,9 @@ slug: bash
 template: page
 ---
 
-## 脚本环境
+## SHELL实践
 
-- [ ] 打造高效的工作环境 – 实践篇
-
-## 脚本项目
-
-- [ ] 管理脚本的脚本
+- [x] [高效SHELL实践（一）: alias](/effient-shell-in-practice-01/)
 
 ## 精选资源
 

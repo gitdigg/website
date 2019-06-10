@@ -27,6 +27,11 @@ template: page
           gitdigg
     </a>
     </li>
+    <li>
+    <strong>微信公众号</strong>: 
+    ASlowBoat / 一艘慢船
+    </li>
+    <image src="/logos/weixin.jpg" />
 </ul>
 
 

@@ -87,4 +87,53 @@ $: alias | grep ^g | wc -l
 ````
 
 真是不查不知道，一查吓一跳竟然会有141个针对`git`命令的别名。虽然每个人自己会根据各自的使用习惯定义自己的别名，但是，尽量使用插件中定义的别名可以减少很多别名冲突的问题。
+这么多别名，一个个看下来还是很累的，而且不容易记。不妨写一个简单的脚本，在要使用`git`命令时先查一下是否存在相应的别名。如果存在就开始逐步使用起来，也就不需要专门进行记忆了。
 
+### 扩展自己的插件
+
+在`oh-my-zsh`的脚本框架下，增加一个自定义的插件`alias`.提供一个快速查询现有别名的功能。
+
+````bash
+
+$: mkdir ～/.oh-my-zsh/plugins/alias
+$: cd ～/.oh-my-zsh/plugins/alias
+$: cat <<EOF > alias.plugin.zsh
+function alias-find(){
+    alias | grep $1
+}
+
+alias af="alias-find "
+EOF
+
+````
+完成编辑后，`.zshrc`中增加`alias`插件。重新开启新的SHELL窗口，现在就可以通过`af`别名命令查询已有的别名了。
+
+````bash
+$: af commit
+gc='git commit -v'
+'gc!'='git commit -v --amend'
+gca='git commit -v -a'
+'gca!'='git commit -v -a --amend'
+gcam='git commit -a -m'
+'gcan!'='git commit -v -a --no-edit --amend'
+'gcans!'='git commit -v -a -s --no-edit --amend'
+gcmsg='git commit -m'
+'gcn!'='git commit -v --no-edit --amend'
+gcs='git commit -S'
+gcsm='git commit -s -m'
+gdt='git diff-tree --no-commit-id --name-only -r'
+git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+gsd='git svn dcommit'
+gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
+````
+这样就可以快速的查询已有存在`commit`内容的别名命令了。
+
+## 总结
+
+- `oh-my-zsh`是一个脚本框架，如果使用该框架，尽可能最大化的使用到它的功能。
+- 扩展自己的插件，可以非常有效的管理自己的脚本。
+
+## 参考项目
+
+个人的`alias`插件项目，请参阅：[liujianping/oh-my-zsh](https://github.com/liujianping/oh-my-zsh/blob/master/plugins/alias/alias.plugin.zsh).

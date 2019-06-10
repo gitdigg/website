@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "尊重生命，即使是蚂蚁，也不会踩死。",
+        author: "JayL",
+        date: "2019/06/10",
+    },
+    {
         content: "不要说谎，即使是拒绝别人。",
         author: "JayL",
         date: "2019/06/09",

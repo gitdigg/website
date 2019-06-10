@@ -810,7 +810,11 @@ blockquote {
     border-radius: 50%;
   }
 
-  h2 {
+  .qrcode {
+    min-width: 180px;
+  }
+
+  h3 {
     border-bottom: 0;
   }
 }
@@ -833,6 +837,12 @@ blockquote {
 
     .avatar {
       margin-right: 2rem;
+    }
+    .qrcode {
+      margin-right: 2rem;
+    }
+    h3 {
+      margin-top: 2rem;
     }
   }
 }

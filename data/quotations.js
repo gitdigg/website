@@ -1,11 +1,16 @@
 const quotations = [
     {
+        content: "唯有个体才会思考，并能为社会创造价值。",
+        author: "爱因斯坦",
+        date: "2019/06/10",
+    },
+    {
         content: "尊重生命，即使是蚂蚁，也不会踩死。",
         author: "JayL",
         date: "2019/06/10",
     },
     {
-        content: "不要说谎，即使是拒绝别人。",
+        content: "不要说谎，即使是说不。",
         author: "JayL",
         date: "2019/06/09",
     },

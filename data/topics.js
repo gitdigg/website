@@ -36,7 +36,7 @@ const topics = [
         icon: linux,
         title: 'Linux',
         path: '/linux/',
-        weight: 4,
+        weight: 6,
     },
     {
         icon: docker,

@@ -174,9 +174,9 @@ coverage: 83.0%
 
 具体测试覆盖率详细信息，可以通过命令行的方式也可以通过网页的方式查看，按[https://dave.cheney.net](https://dave.cheney.net)提供的脚本，简单修改后如下：
 
-````
+````bash
 # 测试覆盖率详情
-cover () {
+cover() {
   t=$(mktemp)
   go test $COVERFLAGS -coverprofile=$t $@ && go tool cover -func=$t && unlink $t
 }
@@ -195,17 +195,45 @@ cover-web() {
 
 ### 2.2.3 CI集成
 
-如何集成到 `CI` 流程，也很简单了，只需要做一件事： **设置好测试覆盖率的通过值，比对项目的测试覆盖率的值**。简单提供一下取值的脚本函数:
+如何集成到 `CI` 流程，也很简单了，只需要做一件事： **设置好测试覆盖率的通过值，比对项目的测试覆盖率的值**。简单提供一下**取值**与**比较**的脚本函数:
 
 ````bash
-cover-value(){
-  go test -cover $@ | awk '{print $5}' | awk -F. '{print $1}'
+cover-val(){
+  cover $@ | grep ^total | awk '{print $3}' | awk -F. '{print $1}'
+}
+
+cover-cmp(){
+  cmp=$1
+  shift
+  val=$(cover-val $@)
+  num=$(($val+0))
+  if [ $cmp -gt  $num ]; then
+    echo "coverage insufficient."
+    return 1
+  fi
+  return 0
 }
 ````
 
-具体比较过程，以及参数配置等过程就交给读者了。
+下面在`CI`过程直接就可以增加相应的覆盖率审查操作：
 
-## 3 参考链接
+````bash
+# 覆盖率 > 60%
+$: cover-cmp 60 github.com/x-mod/routine ; echo $?
+0
+
+# 覆盖率 > 90%
+$: cover-cmp 90 github.com/x-mod/routine ; echo $?
+coverage insuffient.
+1
+
+# Go 项目路径 
+$: cover-cmp 60 ./...
+````
+
+具体脚本可参考: [liujianping/oh-my-zsh/plugins/alias](https://github.com/liujianping/oh-my-zsh/blob/master/plugins/alias/alias.plugin.zsh)
+
+# 3 参考链接
 
 - [awesome-go](https://github.com/avelino/awesome-go)
 - [golangci-lint](https://github.com/golangci/golangci-lint)

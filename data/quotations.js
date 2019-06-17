@@ -1,8 +1,13 @@
 const quotations = [
     {
+        content: "习惯的建立经久累月，破除却只是一瞬间。",
+        author: "JayL",
+        date: "2019/06/15",
+    },
+    {
         content: "唯有个体才会思考，并能为社会创造价值。",
         author: "爱因斯坦",
-        date: "2019/06/10",
+        date: "",
     },
     {
         content: "尊重生命，即使是蚂蚁，也不会踩死。",
@@ -89,6 +94,5 @@ const quotations = [
         author: "莎士比亚",
         date: "",
     },
-  ]
-  export default quotations
-  
+]
+export default quotations

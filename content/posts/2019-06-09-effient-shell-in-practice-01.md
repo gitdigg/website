@@ -1,6 +1,6 @@
 ---
 date: 2019-06-09
-title: '高效SHELL实践（一）: alias'
+title: '高效SHELL实操（一）: 命令别名'
 template: post
 thumbnail: '../thumbnails/bash.png'
 slug: effient-shell-in-practice-01

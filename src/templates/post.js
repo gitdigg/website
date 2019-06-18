@@ -9,8 +9,33 @@ import SEO from '../components/SEO'
 import config from '../../data/SiteConfig'
 import { formatDate, editOnGithub } from '../utils/global'
 import { DiscussionEmbed } from "disqus-react";
+import Gitalk from 'gitalk'
+import 'gitalk/dist/gitalk.css'
 
 export default class PostTemplate extends Component {
+  componentDidMount() {
+    const { slug } = this.props.pageContext
+    var gitalk = new Gitalk({
+      clientID: 'f161c46302f230d1cbf1',
+      clientSecret: '805c9ef60494aee86a8b5afbb6a400115fd54e63',
+      repo: 'https://github.com/gitdigg/website',
+      owner: 'liujianping',
+      admin: ['liujianping'],
+      id: slug,      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    console.log("gitalk:", {
+      clientID: 'f161c46302f230d1cbf1',
+      clientSecret: '805c9ef60494aee86a8b5afbb6a400115fd54e63',
+      repo: 'https://github.com/gitdigg/website',
+      owner: 'liujianping',
+      admin: ['liujianping'],
+      id: slug,      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+  }
+
   render() {
     const { slug } = this.props.pageContext
     const postNode = this.props.data.markdownRemark
@@ -38,11 +63,14 @@ export default class PostTemplate extends Component {
     const twitterUrl = `https://twitter.com/search?q=${config.siteUrl}/${post.slug}/`
     const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
       config.siteUrl
-    }/${post.slug}/&via=gitdigg`
+      }/${post.slug}/&via=gitdigg`
+
     return (
       <Layout>
         <Helmet>
           <title>{`${post.title} – ${config.siteTitle}`}</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></link>
+          <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <article className="single container">
@@ -52,7 +80,7 @@ export default class PostTemplate extends Component {
               <h1>{post.title}</h1>
               <div className="post-meta">
                 <time className="date">{date}</time>
-/
+                /
                 <a className="twitter-link" href={twitterShare}>
                   分享
                 </a>
@@ -78,7 +106,8 @@ export default class PostTemplate extends Component {
         </article>
         <UserInfo name={post.author} />
         <div className="container">
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+          <div id="gitalk-container"></div>
+          {/* <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} /> */}
         </div>
       </Layout>
     )

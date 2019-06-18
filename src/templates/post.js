@@ -16,19 +16,10 @@ export default class PostTemplate extends Component {
   componentDidMount() {
     const { slug } = this.props.pageContext
     var gitalk = new Gitalk({
-      clientID: 'f161c46302f230d1cbf1',
-      clientSecret: '805c9ef60494aee86a8b5afbb6a400115fd54e63',
-      repo: 'https://github.com/gitdigg/website',
-      owner: 'liujianping',
-      admin: ['liujianping'],
-      id: slug,      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    })
-    console.log("gitalk:", {
-      clientID: 'f161c46302f230d1cbf1',
-      clientSecret: '805c9ef60494aee86a8b5afbb6a400115fd54e63',
-      repo: 'https://github.com/gitdigg/website',
-      owner: 'liujianping',
+      clientID: '381ef6e29bdffb9ad797',
+      clientSecret: '558305235c247d8766aa9d051cfce259818c0b85',
+      repo: 'website',
+      owner: 'gitdigg',
       admin: ['liujianping'],
       id: slug,      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode

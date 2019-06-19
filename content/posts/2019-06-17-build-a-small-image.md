@@ -406,16 +406,14 @@ CMD ["./server"]
 
 ````bash
 # 通过命令查询出具体镜像的sha256摘要
-$: docker pull debian:jessie
-# Output:
-# ...
-# Digest: sha256:d5e87cfcb730...
+$: docker inspect busybox:autobuild -f "{{.ID}}"
+sha256:9b63a0eaaed5e677bb1e1b29c1a97268e6c9e6fee98b48badf0f168ae72a51dc
 ````
 
 再在`Dockerfile`定义时，设置基础镜像的`sha256`摘要值
 
 ````Dockerfile
-FROM debian@sha256:d5e87cfcb730...
+FROM busybox@sha256:9b63a0eaaed5e677bb1e1b29c1a97268e6c9e6fee98b48badf0f168ae72a51dc
 ...
 ````
 
@@ -449,11 +447,32 @@ Run CI Validations...
   SKIP: highestWastedBytes: rule disabled
   PASS: lowestEfficiency
 ````
-从输出信息可以得到很多有用的信息，集成的`CI`过程也就非常容易了。
+从输出信息可以得到很多有用的信息，集成的`CI`过程也就非常容易了。 `dive`本身就提供了`.dive-ci`作为项目的`CI`配置:
+
+````yaml
+rules:
+  # If the efficiency is measured below X%, mark as failed.
+  # Expressed as a percentage between 0-1.
+  lowestEfficiency: 0.95
+
+  # If the amount of wasted space is at least X or larger than X, mark as failed.
+  # Expressed in B, KB, MB, and GB.
+  highestWastedBytes: 20MB
+
+  # If the amount of wasted space makes up for X% or more of the image, mark as failed.
+  # Note: the base image layer is NOT included in the total image size.
+  # Expressed as a percentage between 0-1; fails if the threshold is met or crossed.
+  highestUserWastedPercent: 0.20
+````
+集成到`CI`中，增加以下命令即可:
+
+````bash
+$: CI=true dive <image-id> 
+````
 
 # 6. 总结
 
-本篇主要内容通过五个部分对容器镜像进行讲解。分别是：
+本文主要通过五个部分对容器镜像进行讲解。分别是：
 
 - **容器的构建**
   <br>讲解了容器的手动构建与自动构建过程。

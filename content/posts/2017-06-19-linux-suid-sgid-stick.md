@@ -25,31 +25,31 @@ tags:
 你是否想过，一个非`root`用户是如何通过修改他的密码，并且新的密码写入到一个他没有写权限的文件`/etc/shadow`中的。要解答这个问题，我们首先检查以下`/usr/bin/passwd`命令的文件属性：
 
 ````bash
-# ls -lrt /usr/bin/passwd
+$: ls -lrt /usr/bin/passwd
 -r-sr-sr-x   1 root     sys        31396 Jan 20  2014 /usr/bin/passwd
 ````
 
-你会发现该文件在`owner`与`group`区域的执行权限字段不是`x`而是`s`。其中`owner`区的`s`代表`SUID`,而`group`去的`s`则代表`SGID`。
+你会发现该文件在`owner`与`group`区域的执行权限字段不是`x`而是`s`。其中`owner`区的`s`代表`SUID`,而`group`区的`s`则代表`SGID`。
 
 如果一个命令的`SUID`位被设置为`s`， 那么其在执行的过程中，命令的执行用户就会切换成命令的`owner`进行执行。
 
-注意，有时候在`owner`区的`s`可能设置的是`S`。大写的意思是，该执行位的`x`权限是空。
+注意，有时候在`owner`区的`s`可能设置的是`S`。大写的意思是，`owner`区执行位权限是空`-`。
 
 ## Set-group identification (SGID)
 
 `SGID`与`SUID`基本类似，只是在命令执行后切换的用户不是`owner`而是`group`。
 
-与`SUID`不同的是，如果`group`区的`x`权限设置是空的化，同时`SGID`位设置了，那么在其`x`位表示的不是`S`,而是`l`。
+与`SUID`不同的是，如果`group`区的执行位权限设置是空`-`的话，同时`SGID`位设置了，那么在其执行位表示的不是`S`,而是`l`。
 
 ## Sticky Bit
 
-`Sticky Bit`主要用于目录的共享。目录 `/var/tmp` and `/tmp`就具备共享功能，所有用户都可以创建自己的文件，还可以修改或执行其它用户的文件，但是删除文件只能是自己。一旦目录的`Sticky Bit`被设置了，就能保证目录中各自的文件只有文件的所有人可以删除。
+`Sticky Bit`主要用于目录的共享。目录 `/var/tmp` and `/tmp`就具备共享功能，所有用户都可以创建文件，还可以修改或执行其它用户的文件，但是删除文件只能是文件拥有者。一旦目录的`Sticky Bit`被设置了，就能保证目录中各自的文件只有文件的拥有者可以删除。
 
 ````bash
 # ls -ld /var/tmp
 drwxrwxrwt  2   sys   sys   512   Jan 26 11:02  /var/tmp
 ````
-类似`S`,当`Sticky Bit`设置的值是`T`时，表示`other`区的执行权限为空。`t`则代表`other`区的执行权限已设置。
+类似`S`,当`Sticky Bit`设置的值是`T`时，表示`other`区的执行权限为空`-`。`t`则代表`other`区的执行权限已设置。
 
 ## 如何设置以上特殊权限
 

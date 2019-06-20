@@ -6,6 +6,7 @@ thumbnail: '../thumbnails/go.png'
 slug: golang-ci-code-review
 author: JayL
 categories:
+  - Popular
   - go
 tags:
   - code review

@@ -1,6 +1,6 @@
 ---
 date: 2019-06-09
-title: '高效SHELL实操（一）: 命令别名'
+title: '高效SHELL环境 step by step（一）: 命令别名'
 template: post
 thumbnail: '../thumbnails/bash.png'
 slug: effient-shell-in-practice-01
@@ -11,33 +11,31 @@ tags:
   - alias
 ---
 
-看完<a href="https://coolshell.cn/articles/19219.html" target="_blank">《打造高效的工作环境 – SHELL 篇》</a>，切换个人的SHELL环境：`zsh` + [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), 轻松敲打几个命令，该提醒的、弹出的也都如预期般的展示，的确大大的提升了命令输入的效率。
+## 基础环境
 
-如果仅仅是提升输入效率或是使用[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)提供的个性化的主题，可真是大材小用了。[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)是一套真正的基于`zsh`的脚本框架，其真正的威力表现在其提供的200多个插件上。这些插件有些是通过直接提供辅助函数的方式扩展SHELL环境，有些则需要首先安装基础命令，再通过提供一组别名的方式扩展SHELL环境。每个插件都会在其相应的目录中提供`README`文件，供使用者快速入门。
-
-举两个例子，在`~/.zshrc`中的 `plugins`中增加 `osx` 插件，该插件就是直接在脚本中提供一组函数的方式，扩展SHELL的功能。具体`osx`提供哪些功能函数，可以参考插件的[README](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/osx/README.md). 其提供的几个功能函数：
+在进行高效的SHELL实践之前，首先配置一下基础环境，当然首先是需要一台MacOS电脑。这里采用: `zsh` + `oh-my-zsh` + `zsh-completions` + `zsh-autosuggestions` 。具体安装步骤如下:
 
 ````bash
-#  开启一个新的teminal Tab窗口
-$: tab 
-#  横切分Tab窗口
-$: split_tab
-#  纵切分Tab窗口
-$: vsplit_tab
-#  通过finder打开当前目录
-$: ofd
-#  删除当前目录及子目录下的.DS_STORE文件
-$: rmdsstore
+# 切换默认SHELL为 zsh
+$: chsh -s /bin/zsh
+
+# 安装 oh-my-zsh
+$: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# 安装 zsh-completions
+$: git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+
+# 安装 zsh-autosuggestions
+$: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 ````
-就是非常好用的命令。
+安装完成后，轻松敲打几个命令，该提示的、补全的也都如预期般的展示，的确大大的提升了命令输入的效率。
 
-在[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)中插件`git`默认的就是打开的。该`git`插件则是通过提供一组别名的方式来扩展SHELL的。
+## 命令别名
 
-> 如何查看这组别名呢？
+减少输入的另一个办法就是对拼写复杂的命令设置简易的别名。`alias`别名命令最常规的用法就是，定义别名。当然这是`alias`命令的主要功能之一。不过它还具有其它功能，不细看的话很容易被忽略掉。
 
-可以通过直接查看`git`的插件脚本进行查看, 也可查看它的[README](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/README.md)。
-
-更方便的方法是，直接通过`alias`命令查看。很多人只会使用`alias`创建别名，而忽略了该命令的其它功能。不妨通过`tldr`命令查询看看`alias`的功能列表：
+不妨通过`tldr`命令查询看看`alias`的功能列表：
 
 ````bash
 
@@ -66,7 +64,21 @@ Aliases expire with the current shell session, unless they're defined in the she
     alias la="ls -a"
 ````
 
-现在，就通过`alias`命令查看以下`git`插件增加了哪些别名：
+不难看出，`alias`命令还有另外检索的功能，该功能在我们设置别名时先判断是否已经存在别名非常有用。
+
+## 框架扩展
+
+如果仅仅认为[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)只是提供的个性化的主题脚本框架，真是太小看它了。它一套真正的基于`zsh`的脚本框架，其真正的威力还表现在其提供的200多个插件上, 当然这些插件是需要安装的，在 `oh-my-zsh` 的插件目录中仅仅是这些工具的辅助函数或是别名。通过这个插件目录，我们可以发现大量功能强大的工具。当然我们也可以将自己常用的脚本放进来，作为独立的分支维护个人命令。
+
+通常，`oh-my-zsh`都会开启默认插件`git`功能。但是具体`git`插件提供了哪些功能则需要通过插件的[README](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/README.md)文件。打开一看，里面提供的别名有 141 个之多，这么多的别名很明显是无法记忆的。
+
+````bash
+# 统计一些git的别名总数
+$: alias | grep ^g | wc -l
+141
+````
+
+如果能够在使用时快速的查询这些别名，用时查询，一旦用得多了，也就记住了。先通过别名命令手动查询：
 
 ````bash
 $: alias | grep ^g
@@ -80,18 +92,9 @@ gav='git add --verbose'
 gb='git branch'
 gbD='git branch -D'
 ...
-
-# 统计一些git的别名总数
-$: alias | grep ^g | wc -l
-141
 ````
 
-真是不查不知道，一查吓一跳竟然会有141个针对`git`命令的别名。虽然每个人自己会根据各自的使用习惯定义自己的别名，但是，尽量使用插件中定义的别名可以减少很多别名冲突的问题。
-这么多别名，一个个看下来还是很累的，而且不容易记。不妨写一个简单的脚本，在要使用`git`命令时先查一下是否存在相应的别名。如果存在就开始逐步使用起来，也就不需要专门进行记忆了。
-
-### 扩展自己的插件
-
-在`oh-my-zsh`的脚本框架下，增加一个自定义的插件`alias`.提供一个快速查询现有别名的功能。
+现在，我们就可以通过将这个简单命令行，写出自己的脚本，集成的`oh-my-zsh`的框架，作为自己的插件独立维护。在`oh-my-zsh`的插件目录中，增加一个自定义的插件`alias`.提供一个快速查询现有别名的功能。
 
 ````bash
 

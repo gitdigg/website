@@ -15,10 +15,10 @@ import profile from '../content/thumbnails/profile.png'
 
 const topics = [
     {
-      icon: bash,
-      title: '命令行 & 脚本',
-      path: '/bash/',
-      weight: 1,
+        icon: bash,
+        title: '命令行 & 脚本',
+        path: '/bash/',
+        weight: 1,
     },
     {
         icon: go,
@@ -70,7 +70,7 @@ const topics = [
     },
     {
         icon: like,
-        title: '好站收藏',
+        title: '精品收藏',
         path: '/collections/',
         weight: 9,
     },
@@ -80,6 +80,5 @@ const topics = [
         path: '/publications/',
         weight: 10,
     },
-  ]
-  export default topics
-  
+]
+export default topics

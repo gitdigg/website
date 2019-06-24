@@ -101,6 +101,15 @@ $: docker build -t busybox:autobuild .
 
 > Docker 镜像是由一组**只读**的镜像层`Image Layer`组成的。而Docker 容器则是在Docker 镜像的基础之上，增加了一层：容器层`Container Layer`。容器层`Container Layer`是**可读写**的。如果对该容器层`Container Layer`进行`commit`提交操作，该层就变成了新的镜像层`Image Layer`。新的`Docker Image`也就构建出来了。
 
+````bash
+$: mkdir layer && cd layer && touch newfile
+$: cat <<EOF > Dockerfile
+FROM scratch
+ADD  newfile .
+EOF
+$: docker build -t layer .
+````
+
 以下官网提供的图示可以很清楚的看出镜像与容器之间的联系与区别：
 
 ![镜像层](../images/container-layers.jpg)
@@ -407,7 +416,7 @@ CMD ["./server"]
 
 ````bash
 # 通过命令查询出具体镜像的sha256摘要
-$: docker inspect busybox:autobuild -f "{{.ID}}"
+$: docker inspect busybox:autobuild -f "{{.RepoDigests}}"
 sha256:9b63a0eaaed5e677bb1e1b29c1a97268e6c9e6fee98b48badf0f168ae72a51dc
 ````
 

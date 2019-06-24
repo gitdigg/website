@@ -6,7 +6,9 @@ template: page
 
 ## SHELL实践
 
-- [x] [高效SHELL实践（一）: alias](/effient-shell-in-practice-01/)
+- [x] [高效SHELL环境 step by step（一）: 命令别名](/effient-shell-in-practice-01/)
+- [ ] 高效SHELL环境 step by step（二）: 目录跳转
+- [ ] 高效SHELL环境 step by step（三）: 文件查询
 
 ## 精选资源
 

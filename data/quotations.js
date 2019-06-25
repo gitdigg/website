@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "每个人都有自己的人生主题。我们之所以烦恼，是因为总是想干涉他人的人生主题。",
+        author: "JayL",
+        date: "2019/06/25",
+    },
+    {
         content: "习惯的建立经久累月，破除却只是一瞬间。",
         author: "JayL",
         date: "2019/06/15",

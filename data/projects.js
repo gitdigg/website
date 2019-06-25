@@ -1,6 +1,13 @@
 const projects = [
   {
     icon: '⛏️',
+    title: 'ts',
+    path: 'https://github.com/liujianping/ts',
+    source: 'https://github.com/liujianping/ts',
+    description: 'ts, timestamp convert & compare tool',
+  },
+  {
+    icon: '⛏️',
     title: 'JOB',
     path: 'https://github.com/liujianping/job',
     source: 'https://github.com/liujianping/job',

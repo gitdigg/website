@@ -6,6 +6,7 @@ thumbnail: '../thumbnails/go.png'
 slug: how-to-deploy-go-app
 author: JayL
 categories:
+  - Popular
   - go
 tags:
   - deployment

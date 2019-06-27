@@ -107,8 +107,14 @@ function alias-find(){
 
 alias af="alias-find "
 EOF
-
 ````
+
+或者定义一个匿名函数, 别名的另一种写法。
+
+````bash
+$: alias af='f(){ alias | grep $@;  unset -f f; }; f'
+````
+
 完成编辑后，`.zshrc`中增加`alias`插件。重新开启新的SHELL窗口，现在就可以通过`af`别名命令查询已有的别名了。
 
 ````bash

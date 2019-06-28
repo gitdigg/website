@@ -12,7 +12,7 @@ tags:
   - command-line
 ---
 
-周末了，乘着打盹的时间看了一眼前两天写的日期转换的开源工具: [timestamp](https://github.com/liujianping/ts)。发现管道 `pipeline` 的功能点可以放大一下, 就此记录一下以备将来只需。
+乘着打盹的时间看了一眼前两天写的日期转换的开源工具: [ts](https://github.com/liujianping/ts)。发现管道 `pipeline` 的功能点可以放大一下, 就此记录一下以备将来只需。
 
 ## 管道是什么
 

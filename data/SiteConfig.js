@@ -1,7 +1,7 @@
 const config = {
   siteTitle: 'GitDiG',
-  siteTitleShort: 'GitDiG',
-  siteTitleAlt: 'GitDiG',
+  siteTitleShort: '一艘慢船',
+  siteTitleAlt: '一艘慢船',
   siteLogo: '/logos/logo.png',
   siteUrl: 'https://www.gitdig.com',
   repo: 'https://github.com/gitdigg/website',
@@ -9,7 +9,7 @@ const config = {
   dateFromFormat: 'YYYY-MM-DD',
   dateFormat: 'YYYY/MM/DD',
   siteDescription:
-    "Recording JayL's digging",
+    "一艘慢船",
   siteRss: '/rss.xml',
   googleAnalyticsID: 'UA-141133293-1',
   disqusShortname: 'JayL',

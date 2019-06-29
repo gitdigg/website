@@ -34,7 +34,13 @@ export default class CategoriesPage extends Component {
 
 export const pageQuery = graphql`
   query CategoriesQuery {
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(limit: 2000, filter: {
+      frontmatter: {
+        published: {
+          in: [null, true]
+        }
+      }
+    }) {
       group(field: frontmatter___categories) {
         fieldValue
         totalCount

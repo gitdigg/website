@@ -105,7 +105,9 @@ export const pageQuery = graphql`
     posts: allMarkdownRemark(
       limit: 2000, 
       sort: { fields: [fields___date], order: DESC },
-      filter: { frontmatter: { template: { eq: "post" } } }
+      filter: { frontmatter: { template: { eq: "post" } , published: {
+          in: [null, true]
+        }} }
     ) {
       edges {
         node {

@@ -1,7 +1,8 @@
 ---
 date: 2019-06-19
-title: '如何优化Docker Registry私有镜像服务'
+title: '企业镜像分发二三事'
 template: post
+published: false
 thumbnail: '../thumbnails/docker.png'
 slug: docker-registry-ops
 author: JayL
@@ -11,11 +12,16 @@ categories:
 tags:
   - image 
   - registry
+  - distribution
 ---
 
-容器化部署已经逐渐成为企业生产环境应用部署常态。搭建私有容器镜像服务也是大部分企业的必备选择。通常都会使用`Docker Registry`官方提供个镜像直接部署。
+容器化部署已经逐步成为企业生产环境应用部署常态方案, 针对企业容器镜像的发布有必要写篇文章记录一下其过程中的关键点。
 
-# 环境部署
+## 分发方式
+
+在镜像发布
+
+## 镜像发布
 
 `Docker Registry` 的部署非常简单。参考官方文档，无论是从安全、用户管理、前端代理都有非常清晰的操作指南。这里仅仅是简单的构建一个基础的`Registry`镜像服务用于本文的演示。
 

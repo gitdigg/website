@@ -151,6 +151,13 @@ module.exports = {
               allMarkdownRemark(
                 limit: 1000,
                 sort: { order: DESC, fields: [fields___date] },
+                filter: {
+                  frontmatter: {
+                    published: {
+                      in: [null, true]
+                    }
+                  }
+                },
               ) {
                 edges {
                   node {

@@ -16,7 +16,7 @@ export default class Index extends Component {
   render() {
     const { data } = this.props
 
-    let r = Math.random()*100 + 1;
+    let r = Math.random() * 100 + 1;
     r = Math.floor(r % quotations.length);
 
     const quotate = quotations[r]
@@ -42,7 +42,7 @@ export default class Index extends Component {
             <h2 className="callouts">主题文章</h2>
             <TopicListing topics={topics} max={5} more={true} />
           </section>
-        </div> 
+        </div>
         <div className="container front-page">
           <section className="section">
             <h2>最新文章</h2>
@@ -70,7 +70,9 @@ export const pageQuery = graphql`
     latest: allMarkdownRemark(
       limit: 6
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" } } }
+      filter: { frontmatter: { template: { eq: "post" }, published: {
+          in: [null, true]
+        } } }
     ) {
       edges {
         node {
@@ -100,7 +102,9 @@ export const pageQuery = graphql`
     popular: allMarkdownRemark(
       limit: 6
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { categories: { eq: "Popular" } } }
+      filter: { frontmatter: { categories: { eq: "Popular" } published: {
+          in: [null, true]
+        } } }
     ) {
       edges {
         node {

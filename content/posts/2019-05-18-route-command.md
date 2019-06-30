@@ -6,7 +6,6 @@ thumbnail: '../thumbnails/linux.png'
 slug: route-command
 author: JayL
 categories:
-  - Popular
   - devops
   - linux  
 tags:

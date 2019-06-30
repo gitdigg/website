@@ -1,6 +1,6 @@
 ---
 date: 2019-06-28
-title: '一分钟学会在 Go 程序中实现管道 pipeline 功能'
+title: 'Go 编程: 一分钟实现管道 pipe 功能'
 template: post
 thumbnail: '../thumbnails/go.png'
 slug: go-app-support-pipe

@@ -5,25 +5,25 @@ export default class Footer extends Component {
     return (
       <footer className="footer container">
         <a href="/categories/" rel="noopener noreferrer">
-          Categories
+          分类
         </a>
         <a href="/tags/" rel="noopener noreferrer">
-          Tags
-        </a>        
+          标签
+        </a>
         <a href="https://twitter.com/gitdigg" target="_blank" rel="noopener noreferrer">
-          Twitter
+          社交
         </a>
         <a href="https://github.com/liujianping" target="_blank" rel="noopener noreferrer">
-          GitHub
+          开源
         </a>
         <a
           href="https://github.com/gitdigg/website"
           target="_blank"
           rel="noopener noreferrer"
         >
-          View source
+          代码
         </a>
-        
+
       </footer>
     )
   }

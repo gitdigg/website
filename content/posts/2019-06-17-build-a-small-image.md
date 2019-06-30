@@ -13,7 +13,20 @@ tags:
   - dockerfile
 ---
 
-容器化部署越来越多的用于企业的生产环境中，如何构建**可靠、安全、最小化**的 `Docker` 镜像也就越来越重要。本文将针对该问题，通过原理加实践的方式，从头到脚帮你撸一遍。
+容器化部署越来越多的用于企业的生产环境中，如何构建**可靠、安全、最小化**的 `Docker` 镜像也就越来越重要。本文将针对该问题，通过原理加实践的方式，从头到脚帮你撸一遍。文章有点长，主要通过五个部分对容器镜像进行讲解。分别是：
+
+- **容器的构建**
+  <br>讲解了容器的手动构建与自动构建过程。
+- **镜像的存储**
+  <br>讲解了镜像的分层结构以及UnionFS联合文件系统，以及镜像层在UnionFS上的实现。
+- **最小化容器构建**
+  <br>讲解了为什么需要最小化镜像，同时如何进行最小化操作。
+- **容器镜像的加固**
+  <br>容器镜像加固的具体方式。
+- **容器镜像的审查**
+  <br>高质量的项目中容器镜像也需要向代码一样进行审查。
+
+文中例子，均可以在Linux系统或MacOS系统中进行实际演练。通过具体的操作可以对加深具体概念的理解。
 
 # 1. 构建镜像
 
@@ -40,7 +53,7 @@ $: docker run -it busybox:latest sh
 
 ````bash
 # 列出最近创建的容器
-$: docker container ls -l
+$: docker container ls -n 1
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
 c028c091f964        busybox:latest      "sh"                13 minutes ago      Exited (0) 27 seconds ago                       upbeat_cohen
 
@@ -95,7 +108,7 @@ EOF
 $: docker build -t busybox:autobuild .
 ````
 
-## 2 镜像的存储
+# 2 镜像的存储
 
 ## 2.1 镜像的组成
 
@@ -127,7 +140,7 @@ ef46e0caa533        4 days ago          /bin/sh -c #(nop) CMD ["sh"]            
 
 不难看出，镜像`busybox:autobuild`一共执行了从底往上的三次层构建。具体构建的指令可以通过第三列的命令得出。`<missing>`的意思是：该层是在其它系统上构建的，在本地是不可用的。只需要忽略就好。
 
-### 2.2 Union FileSystem
+## 2.2 Union FileSystem
 
 要了解 Docker 镜像的存储首先必须了解**联合文件系统 `UnionFS` (Union File System)**，所谓`UnionFS`就是把不同物理位置的目录合并`mount`到同一个目录中。`UnionFS`的具体实现有很多种:
 
@@ -260,7 +273,7 @@ overlay on /home/docker/demo/merged type overlay (rw,relatime,lowerdir=lower,upp
 ````
 从现有输出可知目前我们`docker-machine`中仅挂载了一个`overlay`目录。
 
-### 2.3 镜像的存储
+## 2.3 镜像的存储
 
 现在我们在这台新的`docker-machine`上构建一个`1.2`中所描述的`Docker`镜像: `busybox:autobuild`。
 
@@ -502,24 +515,7 @@ $: CI=true dive <image-id>
 ````
 镜像审查和代码审查类似，是一件开始抵制，开始后就欲罢不能的事。这件事宜早不宜迟。对于企业与个人而言均百利而无一害。
 
-# 6. 总结
-
-本文主要通过五个部分对容器镜像进行讲解。分别是：
-
-- **容器的构建**
-  <br>讲解了容器的手动构建与自动构建过程。
-- **镜像的存储**
-  <br>讲解了镜像的分层结构以及UnionFS联合文件系统，以及镜像层在UnionFS上的实现。
-- **最小化容器构建**
-  <br>讲解了为什么需要最小化镜像，同时如何进行最小化操作。
-- **容器镜像的加固**
-  <br>容器镜像加固的具体方式。
-- **容器镜像的审查**
-  <br>高质量的项目中容器镜像也需要向代码一样进行审查。
-
-文中例子，均可以在Linux系统或MacOS系统中进行实际演练。通过具体的操作可以对加深具体概念的理解。
-
-# 7. 参考资源
+# 6. 参考资源
 
 - [the-overlay-filesystem](https://windsock.io/the-overlay-filesystem/)
 - [how-to-build-a-smaller-docker-image](https://medium.com/@gdiener/how-to-build-a-smaller-docker-image-76779e18d48a)

@@ -1,6 +1,6 @@
 ---
 date: 2019-07-01
-title: '一分钟系列： Go 语言用时定义'
+title: '一分钟系列： Go 编程之用时定义'
 template: post
 thumbnail: '../thumbnails/go.png'
 slug: go-return-define
@@ -28,7 +28,7 @@ func Start(options ...func(*Profile)) interface {
 
 咋一看，真是没看懂。再仔细一看，其实只是在函数的返回结果时定义了一个匿名接口。不妨，将之称为**用时定义**， 即不是在返回前提前定义，而是在函数返回阶段定义匿名接口。
 
-这么做也的确有炫技的感觉，不过大神炫技，咱跟着看看学点有意思的东西也不错。
+这么做也的确有炫技的嫌疑，不过就算大神炫技，咱跟着看看学点有意思的东西也不错。
 
 ````go
 import "github.com/pkg/profile"
@@ -41,3 +41,25 @@ func main() {
 
 再看看该库的使用指南，这种做法真的是优雅。赶紧收藏！
 
+贴一个彩蛋，昨天 Dave Cheney 的Twitter：
+
+````go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+   fmt.Println(0 > "0"[0])
+}
+````
+
+答案有以下选择：
+
+1. 0
+2. true
+3. false
+4. 48
+
+大家可以选择一下？答案过两天评论里給。

@@ -10,6 +10,9 @@ export default class Footer extends Component {
         <a href="/tags/" rel="noopener noreferrer">
           标签
         </a>
+        <a href="https://gitdig.com/rss.xml" rel="noopener noreferrer">
+          RSS
+        </a>
         <a href="https://twitter.com/gitdigg" target="_blank" rel="noopener noreferrer">
           社交
         </a>

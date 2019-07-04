@@ -25,7 +25,7 @@ export default class Index extends Component {
 
     return (
       <Layout>
-        <Helmet title={`${config.siteTitle} – ${config.siteDescription}`} />
+        <Helmet title={`${config.siteTitle} – ${config.siteTitleShort}`} />
         <SEO />
         <div className="container">
           <div className="quotations">

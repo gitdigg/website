@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "意识到自己在做什么，比做什么更重要。",
+        author: "JayL",
+        date: "2019/07/02",
+    },
+    {
         content: "一个对宽容敏感的人，对苛刻自然会过敏。",
         author: "陈卫",
         date: "《保护才能》",

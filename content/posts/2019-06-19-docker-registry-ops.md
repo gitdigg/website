@@ -1,6 +1,6 @@
 ---
 date: 2019-06-19
-title: '企业镜像分发二三事'
+title: '企业级 Docker 镜像分发二三事'
 template: post
 published: false
 thumbnail: '../thumbnails/docker.png'
@@ -15,7 +15,7 @@ tags:
   - distribution
 ---
 
-容器化部署已经逐步成为企业生产环境应用部署常态方案, 针对企业容器镜像的发布有必要写篇文章记录一下其过程中的关键点。
+在个人电脑上搭建 Docker 镜像分发服务是非常简单的一件事，简单的一个 Docker Pull 命令就能搞定。但是针对企业级的 Docker 镜像分发服务则不可这么随意，本文是作者本人就所在企业搭建 Docker 镜像分发服务的一些经验总结，方便更多中小企业技术人员参考。
 
 ## 第一件事：选择分发方式
 

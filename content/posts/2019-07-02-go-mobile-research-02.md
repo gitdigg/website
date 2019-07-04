@@ -24,7 +24,7 @@ tags:
 
 - [x] [iOS 应用实现 gRPC 调用](/go-mobile-research-01/)
 - [x] [GoMobile 在 iOS 上的应用](/go-mobile-research-02/)
-- [ ] Android 应用实现 gRPC 调用
+- [x] [Android 应用实现 gRPC 调用](/go-mobile-research-03/)
 - [ ] GoMobile 在 Android 上的应用
 - [ ] C/S 架构 or 静态库
 
@@ -50,7 +50,7 @@ $: go get golang.org/x/mobile/cmd/gomobile
 
 ## GoMobile 的限制
 
-在现有的框架下，Go Mobile 进支持以下类型的跨语言：
+除了上面说的 GoMobile 不支持 Go Module 包依赖功能以外，在跨语言方面，有以下类型上的限制：
 
 - 有符号的整形和浮点数
 - 字符串和布尔值（字符串映射成String或NSString*）

@@ -24,7 +24,7 @@ tags:
 
 - [x] [iOS 应用实现 gRPC 调用](/go-mobile-research-01/)
 - [ ] GoMobile 在 iOS 上的应用
-- [ ] Android 应用实现 gRPC 调用
+- [x] [Android 应用实现 gRPC 调用](/go-mobile-research-03/)
 - [ ] GoMobile 在 Android 上的应用
 - [ ] C/S 架构 or 静态库
 
@@ -96,18 +96,22 @@ $: mkdir proto
 $: cat <<EOF > proto/hello.proto
 syntax = "proto3";
 
-package hello;
+option java_multiple_files = true;
+option java_package = "com.gitdig.helloworld";
+option java_outer_classname = "HelloWorldProto";
+
+package helloworld;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
 
 message HelloRequest {
-  string greeting = 1;
+  string name = 1;
 }
 
-message HelloResponse {
-  string reply = 1;
-}
-
-service HelloService {
-  rpc SayHello(HelloRequest) returns (HelloResponse);
+message HelloReply {
+  string message = 1;
 }
 EOF
 ````

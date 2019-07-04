@@ -26,8 +26,6 @@ tags:
 
 具体调研内容包括:
 
-具体调研内容包括:
-
 - [x] [iOS 应用实现 gRPC 调用](/go-mobile-research-01/)
 - [x] [Android 应用实现 gRPC 调用](/go-mobile-research-02/)
 - [ ] GoMobile SDK 在 iOS & Android 上的集成

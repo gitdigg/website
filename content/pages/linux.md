@@ -15,3 +15,4 @@ template: page
 ## 网络&安全
 
 - [ ] [如何管理系统路由表](/route-command/)
+- [ ] [SUID, SGID 和 Sticky Bit 到底是什么](/linux-suid-guid-stick/)

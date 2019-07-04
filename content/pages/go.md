@@ -6,7 +6,8 @@ template: page
 
 ## 一分钟系列
 
-- [x] [Go 编程: 一分钟实现管道 pipe 功能](/go-app-support-pipe/)
+- [x] [Go 编程: 实现管道 pipe 功能](/go-app-support-pipe/)
+- [x] [Go 编程: 用时定义 - 匿名接口](/go-return-define/)
 
 ## 通用扩展包
 

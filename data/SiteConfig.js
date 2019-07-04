@@ -8,8 +8,7 @@ const config = {
   pathPrefix: '',
   dateFromFormat: 'YYYY-MM-DD',
   dateFormat: 'YYYY/MM/DD',
-  siteDescription:
-    "一艘慢船",
+  siteDescription: "一艘飘荡在浩瀚无垠的信息海洋中的慢船，这里没有大事件，只有小声音。内容关于：IT技术、读书与旅行。",
   siteRss: '/rss.xml',
   googleAnalyticsID: 'UA-141133293-1',
   disqusShortname: 'JayL',

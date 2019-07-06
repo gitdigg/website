@@ -1,5 +1,5 @@
 ---
-date: 2019-07-05
+date: 2019-07-06
 title: '记一次技术调研(三): GoMobile SDK 在 iOS 与 Android 上的集成与边界'
 template: post
 published: true

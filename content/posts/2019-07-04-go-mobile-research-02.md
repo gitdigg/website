@@ -28,8 +28,8 @@ tags:
 
 - [x] [iOS 应用实现 gRPC 调用](/go-mobile-research-01/)
 - [x] [Android 应用实现 gRPC 调用](/go-mobile-research-02/)
-- [ ] GoMobile SDK 在 iOS & Android 上的集成
-- [ ] GoMobile SDK 在 iOS & Android 上的边界
+- [x] [GoMobile SDK 在 iOS & Android 上的集成](/go-mobile-research-03/)
+- [x] [GoMobile SDK 在 iOS & Android 上的边界](/go-mobile-research-03/)
 - [ ] C/S 架构 or 静态库
 
 其中关于 gRPC 在 iOS 与 Android 的实现，本身官方就已经提供了样例。本次调研会用到相关内容，所以将其作为调研的一部分记录下来，方便后来者阅读。调研中所有涉及的项目代码均存放于: [liujianping/grpc-apps](https://github.com/liujianping/grpc-apps) 仓库中， 需要的朋友可以直接下载测试。

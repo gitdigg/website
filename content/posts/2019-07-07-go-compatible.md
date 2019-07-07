@@ -81,7 +81,7 @@ $: GOOS=windows go list -f '{{.GoFiles}}' os/exec
 ````
 空格 ' ' = OR
 逗号 ',' = AND
-感叹号 '!' = NO
+感叹号 '!' = NOT
 换行 = OR
 ````
 

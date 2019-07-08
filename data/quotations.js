@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "庸人模仿，天才抄袭。",
+        author: "T.S. 艾略特",
+        date: "",
+    },
+    {
         content: "意识到自己在做什么，比做什么更重要。",
         author: "JayL",
         date: "2019/07/02",

@@ -11,10 +11,10 @@ template: page
 
 ## 通用扩展包
 
-- [ ] 为什么要扩展 errors 
-- [ ] 为什么要扩展 log
-- [ ] 为什么要扩展 http.Client
-- [ ] 为什么要管理 go routines
+- [ ] 如何扩展 errors 
+- [ ] 如何扩展 log
+- [ ] 如何扩展 http.Client
+- [ ] 如何管理 go routine
 
 ## 服务框架包
 

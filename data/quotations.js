@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "也许我们根本就问错了问题。",
+        author: "尼尔·布朗 斯图尔特·基利",
+        date: "《学会提问》",
+    },
+    {
         content: "庸人模仿，天才抄袭。",
         author: "T.S. 艾略特",
         date: "",

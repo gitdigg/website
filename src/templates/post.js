@@ -8,9 +8,9 @@ import PostTags from '../components/PostTags'
 import SEO from '../components/SEO'
 import config from '../../data/SiteConfig'
 import { formatDate, editOnGithub } from '../utils/global'
-import { DiscussionEmbed } from "disqus-react";
 import Gitalk from 'gitalk'
 import 'gitalk/dist/gitalk.css'
+import CopyRight from '../components/CopyRight';
 
 export default class PostTemplate extends Component {
   componentDidMount() {
@@ -48,7 +48,7 @@ export default class PostTemplate extends Component {
     if (post.thumbnail) {
       thumbnail = post.thumbnail.childImageSharp.fixed
     }
-
+    const url = `${config.siteUrl}/${post.slug}`
     const date = formatDate(post.date)
     const githubLink = editOnGithub(post)
     const twitterUrl = `https://twitter.com/search?q=${config.siteUrl}/${post.slug}/`
@@ -72,6 +72,10 @@ export default class PostTemplate extends Component {
               <div className="post-meta">
                 <time className="date">{date}</time>
                 /
+                <a className="twitter-link" href="https://github.com/liujianping">
+                  {post.author}
+                </a>
+                /
                 <a className="twitter-link" href={twitterShare}>
                   分享
                 </a>
@@ -84,6 +88,7 @@ export default class PostTemplate extends Component {
             </div>
           </header>
           <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <CopyRight author={post.author} slug={slug} url={url} title={post.title} />
           <div>
             {' '}
             <a className="button twitter-button" href={twitterShare} target="_blank">
@@ -95,6 +100,7 @@ export default class PostTemplate extends Component {
             </a>
           </div>
         </article>
+
         <UserInfo name={post.author} />
         <div className="container">
           <div id="gitalk-container"></div>

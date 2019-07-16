@@ -12,6 +12,9 @@ categories:
   - android
 tags:
   - gomobile
+  - Go 编程
+  - go
+  - golang
 ---
 > **问题**
 >

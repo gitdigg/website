@@ -10,7 +10,11 @@ categories:
   - microservice
   - Popular
 tags:
-  - code generation
+  - golang
+  - go
+  - code generate
+  - orm
+  - 代码生成
 ---
 
 我做过两个自动化生成代码的项目，[scaffold](https://github.com/liujianping/scaffold)和[redis-orm](https://github.com/ezbuy/redis-orm)。

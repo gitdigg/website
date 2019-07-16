@@ -10,6 +10,10 @@ categories:
   - go
 tags:
   - comment
+  - 注释
+  - Go 编程
+  - go
+  - golang
 ---
 
 自从上篇总结了一下[Go 编程： 交叉编译 vs 条件编译](/go-compatible/)之后，觉得有必要对于类似**条件编译标签**此类的特殊注释做一次简单收集。

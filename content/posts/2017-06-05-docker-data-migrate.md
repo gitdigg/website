@@ -8,7 +8,8 @@ author: JayL
 categories:
   - docker
 tags:
-  - data-migrate
+  - docker
+  - 存储迁移
 ---
 
 一篇简易文章，简单记录一下 Docker 的存储目录迁移过程。

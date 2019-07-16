@@ -7,9 +7,15 @@ thumbnail: '../thumbnails/go.png'
 slug: go-compatible
 author: JayL
 categories:
+  - Popular
   - go
 tags:
-  - compatible
+  - 版本兼容
+  - 交叉编译
+  - 条件编译
+  - Go 编程
+  - go
+  - golang
 ---
 
 说起**条件编译**，大部分开发人员都会联想到**交叉编译**。但是 **条件编译** 和 **交叉编译** 完全是两回事， 解决的问题也是不一样的。总结区分一下：

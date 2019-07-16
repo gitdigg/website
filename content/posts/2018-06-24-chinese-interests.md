@@ -10,6 +10,7 @@ categories:
 tags:
   - chinese
   - language
+  - 国文趣味
 ---
 
 ## 1 先生生平

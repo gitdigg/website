@@ -10,6 +10,9 @@ categories:
 tags:
   - shanghai
   - language
+  - proper limit
+  - 语言的分寸
+  - 语言的分寸感
 ---
 
 正如美国知名新闻主播Robert Macneil在序言中所言，拜读S.I.早川先生的《语言与人生》（Language in Thought & Action）是我人生中重要的成长经验之一。

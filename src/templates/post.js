@@ -44,7 +44,6 @@ export default class PostTemplate extends Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID
     }
-
     if (post.thumbnail) {
       thumbnail = post.thumbnail.childImageSharp.fixed
     }
@@ -59,7 +58,12 @@ export default class PostTemplate extends Component {
     return (
       <Layout>
         <Helmet>
+          {post.tags &&
+            post.tags.map(tag => (
+              <meta property="article:tag" content={tag} />
+            ))}
           <title>{`${post.title} – ${config.siteTitle}`}</title>
+
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></link>
           <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
         </Helmet>
@@ -84,7 +88,6 @@ export default class PostTemplate extends Component {
                   编辑 ✏️
                 </a>
               </div>
-              <PostTags tags={post.tags} />
             </div>
           </header>
           <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
@@ -114,17 +117,17 @@ export default class PostTemplate extends Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+            markdownRemark(fields: {slug: {eq: $slug } }) {
+            html
       timeToRead
-      excerpt
+          excerpt
       frontmatter {
-        title
+            title
         thumbnail {
-          childImageSharp {
-            fixed(width: 150, height: 150) {
-              ...GatsbyImageSharpFixed
-            }
+            childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
           }
         }
         slug
@@ -135,13 +138,13 @@ export const pageQuery = graphql`
         template
       }
       fields {
-        nextTitle
+            nextTitle
         nextSlug
-        prevTitle
-        prevSlug
-        slug
-        date
+          prevTitle
+          prevSlug
+          slug
+          date
+        }
       }
     }
-  }
-`
+  `

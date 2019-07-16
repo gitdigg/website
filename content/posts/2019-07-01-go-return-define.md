@@ -9,6 +9,10 @@ categories:
   - go
 tags:
   - return-define
+  - 用时定义
+  - Go 编程
+  - go
+  - golang
 ---
 
 研究 Go 大神的开源库，常常会有惊喜。以 Dave Cheney 的开源库[github.com/pkg/profile](https://github.com/pkg/profile) 为例，其中有一句辣眼睛的写法:

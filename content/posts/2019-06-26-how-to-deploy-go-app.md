@@ -12,6 +12,9 @@ tags:
   - deployment
   - install
   - brew
+  - go
+  - golang
+  - 程序发布
 ---
 
 这两天又写了一个开源小工具，时间戳转换与对比工具:[ts](https://github.com/liujianping/ts)，主要是在公司运维时使用。程序写完了发现安装过程不够自动化，特别是对于个人使用 MacOS 系统，日常运维是 Linux 操作系统。虽然 Go 语言支持跨平台编译，但是拿着个二进制程序拷贝来拷贝去，总归不像样。本文记录一下如何优雅在 Linux & MacOS 上发布 Go 程序的过程。

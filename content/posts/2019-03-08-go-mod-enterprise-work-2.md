@@ -10,6 +10,7 @@ categories:
   - devops
 tags:
   - go module
+  - 工程化实践
 ---
 
 # 2. `go get` 取包原理篇

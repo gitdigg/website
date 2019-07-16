@@ -211,23 +211,23 @@ a.article-callout {
 
 .single {
   .gatsby-image-wrapper {
-    height: 50px !important;
-    width: 50px !important;
+    height: 0px !important;
+    width: 0px !important;
   }
 }
 
 @include small-breakpoint {
   .single {
     .gatsby-image-wrapper {
-      height: 150px !important;
-      width: 150px !important;
+      height: 120px !important;
+      width: 120px !important;
     }
   }
 }
 
 .single-header {
   display: grid;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   &.no-thumbnail {
     display: flex;
@@ -245,16 +245,24 @@ a.article-callout {
   .post-meta {
     margin-bottom: 1rem;
   }
+
+  img {
+    display: none;
+  }
 }
 
 @include small-breakpoint {
   .single-header {
     display: grid;
     grid-template-columns: 180px 1fr;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 
     h1 {
       margin: 0 0 0.5rem 0;
+    }
+
+    img {
+      display: inline-block;
     }
   }
 }

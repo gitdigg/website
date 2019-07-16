@@ -87,6 +87,7 @@ export default class PostTemplate extends Component {
                 <a className="github-link" href={githubLink} target="_blank">
                   编辑 ✏️
                 </a>
+                <PostTags tags={post.tags} />
               </div>
             </div>
           </header>

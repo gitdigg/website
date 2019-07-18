@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 export default class CopyRight extends Component {
     render() {
         const { title, slug, url, author } = this.props;
+        const hitsUrl = `https://hitcounter.pythonanywhere.com/count/tag.svg?url=${url}`
         return (
             <blockquote>
                 <ul>
@@ -13,7 +14,7 @@ export default class CopyRight extends Component {
                     </li>
                     <li>
                         <strong>文章链接</strong>
-                        &nbsp;&nbsp;:&nbsp;&nbsp;<img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits" className="hits" />&nbsp;&nbsp;
+                        &nbsp;&nbsp;:&nbsp;&nbsp;<img src={hitsUrl} alt="Hits" className="hits" />&nbsp;&nbsp;
                         <Link to={slug} key={title}>
                             {url}
                         </Link>

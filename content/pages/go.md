@@ -11,6 +11,7 @@ template: page
 - [x] [Go 编程: 图解反射](/go-reflect/)
 - [x] [Go 编程: 那些奇怪的注释](/go-comment/)
 - [x] [Go 编程: 那些隐晦的符号](/go-operators/)
+- [x] [Go 编程: GoMobile 调研](/go-mobile-research-03/)
 
 ## Go 程序发布
 
@@ -19,6 +20,12 @@ template: page
 ## Go 代码规范
 
 - [x] [像 Awesome-Go 一样提升企业 Go 项目代码质量](/golang-ci-code-review/)
+
+## Go 项目工程
+
+- [x] [Go Module 工程化实践（一）: 基础概念篇](/go-mod-enterprise-work-1/)
+- [x] [Go Module 工程化实践（二）: 取包原理篇](/go-mod-enterprise-work-2/)
+- [x] [Go Module 工程化实践（三）: 工程实践篇](/go-mod-enterprise-work-3/)
 
 ## Go 代码自动化
 

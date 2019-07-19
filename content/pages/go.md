@@ -4,23 +4,42 @@ slug: go
 template: page
 ---
 
-## 一分钟系列
+## Go 编程技巧
 
 - [x] [Go 编程: 实现管道 pipe 功能](/go-app-support-pipe/)
 - [x] [Go 编程: 用时定义 - 匿名接口](/go-return-define/)
+- [x] [Go 编程: 图解反射](/go-reflect/)
+- [x] [Go 编程: 那些奇怪的注释](/go-comment/)
+- [x] [Go 编程: 那些隐晦的符号](/go-operators/)
 
-## 通用扩展包
+## Go 程序发布
 
-- [ ] 如何扩展 errors 
-- [ ] 如何扩展 log
-- [ ] 如何扩展 http.Client
-- [ ] 如何管理 go routine
+- [x] [如何在 Linux & MacOS 上优雅的发布 Go 程序](/how-to-deploy-go-app/)
 
-## 服务框架包
+## Go 代码规范
 
-- [ ] 如何封装基于ProtoBuf格式的 http server
-- [ ] 如何封装基于Thrift格式的 udp server
-- [ ] 如何实现基于Kubernetes技术的微服务框架
+- [x] [像 Awesome-Go 一样提升企业 Go 项目代码质量](/golang-ci-code-review/)
+
+## Go 代码自动化
+
+- [x] [自动化生成代码的秘密](/auto-generate-code/)
+- [ ] 基础程序框架生成
+- [ ] 微服务程序框架生成
+- [ ] ORM代码生成
+- [ ] 代码生成模板管理
+
+## Go 基础程序框架
+
+- [ ] 扩展 errors 
+- [ ] 扩展 log
+- [ ] 扩展 http.Client
+- [ ] 管理 go routine
+
+## Go 微服务程序框架
+
+- [ ] 封装基于ProtoBuf格式的 http server
+- [ ] 封装基于Thrift格式的 udp server
+- [ ] 实现基于Kubernetes技术的微服务框架
 
 ## 项目实践
 
@@ -30,6 +49,3 @@ template: page
 - [x] [github.com/x-mod/routine](https://github.com/x-mod/routine)
 - [x] [github.com/x-mod/udpthrift](https://github.com/x-mod/udpthrift)
 
-## 各类资源
-
-- [ ] [High Performance Go Workshop](https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html)

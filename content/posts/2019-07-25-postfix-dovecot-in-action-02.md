@@ -152,7 +152,7 @@ $: apt install certbot python-certbot-nginx
 $: certbot --nginx
 ````
 
-安装过程中，设置域名: `mail.example.org`, 选择`Y`,自动化安装。安装完成后，证书存放于: `/etc/letsencrypt/live/mail.example.org/` 目录。
+安装过程中，设置域名: `example.org`, 选择`Y`,自动化安装。安装完成后，证书存放于: `/etc/letsencrypt/live/example.org/` 目录。
 
 ## 4. 邮件系统
 
@@ -909,7 +909,9 @@ $: systemctl restart postfix
 
 ## 6. 小结
 
-以上配置亲测有效，唯一需要修改的地方就是具体的邮件域名`example.org`替换成目标域名即可。
+以上配置亲测有效，唯一需要修改的地方就是具体的邮件域名`example.org`替换成目标域名即可。通过发给 gmail 的邮件原文验证所有配置生效。
+
+![](../images/spfpass.jpg)
 
 ## 参考
 

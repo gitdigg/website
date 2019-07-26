@@ -1,6 +1,6 @@
 ---
 date: 2019-07-26
-title: 'Go 编程: tcpserver 框架与 graceful shutdown 功能实现'
+title: 'Go 编程：tcpserver & graceful shutdown'
 template: post
 published: true
 thumbnail: '../thumbnails/go.png'

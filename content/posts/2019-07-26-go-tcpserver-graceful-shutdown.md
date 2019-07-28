@@ -2,6 +2,7 @@
 date: 2019-07-26
 title: 'Go 编程：tcpserver & graceful shutdown'
 template: post
+author: JayL
 published: true
 thumbnail: '../thumbnails/go.png'
 slug: go-tcpserver-graceful-shutdown

@@ -118,3 +118,19 @@ func (srv *Server) Serve(ctx context.Context) error {
 ````
 
 贴一小段代码方便大家阅读，具体代码请直接参考实现: [server.go](https://github.com/x-mod/tcpserver/blob/master/tcpserver.go)。为什么`context`很重要，因为除了自己定义chan作为信号触发机制以外，还可以通过`context`的超时或者取消机制进行信号的传递，具体实现不再赘述了。
+
+## 后记
+
+由于`serve.Serve`函数在`for`循环中一直阻塞在`Accept()`函数处，所以原代码中使用`close chan`的方式触发关闭过程失败。新版本直接通过关闭`Listener`的方式触发关闭。
+
+````go
+//Close tcpserver waiting all connections finished
+func (srv *Server) Close() {
+    //关闭监听，触发关闭信号
+    srv.Listener.Close()
+    //等待客户端连完成
+	srv.wgroup.Wait()
+}
+````
+
+以上。

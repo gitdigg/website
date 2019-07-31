@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "创作者的困境，往往自己满意的，总是缺少共鸣的。",
+        author: "JayL",
+        date: "2019/07/30",
+    },
+    {
         content: "我所有的思想、行为与选择，所秉持的核心价值观是，对生命和个体的尊重。",
         author: "JayL",
         date: "2019/07/12",

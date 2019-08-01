@@ -9,15 +9,16 @@ import micro from '../content/thumbnails/micro.svg'
 import gatsby from '../content/thumbnails/gatsby.png'
 import opinion from '../content/thumbnails/opinion.png'
 import like from '../content/thumbnails/like.png'
+import gitbook from '../content/thumbnails/gitbook.png'
 import segmentfault from '../content/thumbnails/segmentfault.png'
 import profile from '../content/thumbnails/profile.png'
 
 
 const topics = [
     {
-        icon: bash,
-        title: '命令行 & 脚本',
-        path: '/bash/',
+        icon: gitbook,
+        title: 'GitBook 快速指南',
+        path: '/gitbook/',
         weight: 1,
     },
     {
@@ -25,6 +26,12 @@ const topics = [
         title: 'Go 编程',
         path: '/go/',
         weight: 2,
+    },
+    {
+        icon: bash,
+        title: '命令行 & 脚本',
+        path: '/bash/',
+        weight: 3,
     },
     {
         icon: micro,

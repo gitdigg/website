@@ -17,8 +17,8 @@ import profile from '../content/thumbnails/profile.png'
 const topics = [
     {
         icon: gitbook,
-        title: 'GitBook 快速指南',
-        path: '/gitbook/index.html',
+        title: 'GitBook 指南',
+        path: '/gitbook/',
         weight: 1,
     },
     {

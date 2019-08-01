@@ -5,7 +5,7 @@ import mario from '../../content/thumbnails/mario.png'
 export default class TopicListing extends Component {
     render() {
         const { topics, max, more } = this.props;
-        topics.sort(function(t1, t2) {
+        topics.sort(function (t1, t2) {
             return t1.weight - t2.weight;
         });
         let currents = [];
@@ -21,16 +21,16 @@ export default class TopicListing extends Component {
                 path: '/topics/',
                 weight: 0,
             })
-        }        
+        }
         return (<section className="callouts" key="topics">
             {
-                currents.map(function(topic, i) {
+                currents.map(function (topic, i) {
                     return (<div className="item" key={i}>
-                        <Link to={topic.path} className="article-callout">
+                        <a target="_blank" href={topic.path} className="article-callout">
                             <img src={topic.icon} alt={topic.title} /> {topic.title}
-                        </Link>
+                        </a>
                     </div>);
-                }) 
+                })
             }
         </section>);
     }

@@ -18,7 +18,7 @@ const topics = [
     {
         icon: gitbook,
         title: 'GitBook 快速指南',
-        path: '/gitbook/',
+        path: '/gitbook/index.html',
         weight: 1,
     },
     {

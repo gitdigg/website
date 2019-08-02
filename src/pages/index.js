@@ -39,7 +39,7 @@ export default class Index extends Component {
         </div>
         <div className="container front-page">
           <section className="section">
-            <h2 className="callouts">主题文章</h2>
+            <h2 className="callouts">主题小册</h2>
             <TopicListing topics={topics} max={5} more={true} />
           </section>
         </div>

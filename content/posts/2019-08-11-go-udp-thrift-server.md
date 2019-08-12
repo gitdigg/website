@@ -26,7 +26,7 @@ tags:
 
 ![](../images/jaeger-arch-v1.png)
 
-从图中可以看出，`Jaeger`是使用`UDP`协议作为实现`jaeger-client`与`jaeger-agent`之间的基础通信协议。其它网路组件直接则通过`TCP`通信。无论是`UDP`还是`TCP`均不属于应用层协议，在应用层同样需要选择或设计相应的应用级协议格式。如今很少设计自定义的协议格式，通常会采用`ProtoBuffer`或`Thrift`等此类专门`IDL`，进行接口定义。深入研究[Jaeger](https://github.com/jaegertracing/jaeger)代码，就会发现，同一个项目中不但用了`ProtoBuffer`，同时也使用了`Thrift`，只是具体使用场景不同。
+从图中可以看出，`Jaeger`是使用`UDP`协议作为实现`jaeger-client`与`jaeger-agent`之间的基础通信协议。其它网路组件直接则通过`TCP`通信。无论是`UDP`还是`TCP`均不属于应用层协议，在应用层同样需要选择或设计相应的应用级协议格式。如今很少设计自定义的协议格式，通常会采用`ProtoBuffer`或`Thrift`等此类专门`IDL`，进行接口定义。深入研究[Jaeger](https://github.com/jaegertracing/jaeger)代码，就会发现，同一个项目中不但用了`Thrift`，同时也使用了`ProtoBuffer`，只是具体使用场景不同。
 
 > **为什么`Thrift`更加适合在`UDP`协议上使用呢？**
 

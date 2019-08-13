@@ -11,7 +11,7 @@ export default class UserInfo extends Component {
       return (
         <aside className="note"></aside>
       )
-    } 
+    }
     let image = author.image
     let style = "avatar"
     if (author.qrcode) {
@@ -26,11 +26,11 @@ export default class UserInfo extends Component {
               <img className={style} src={image} alt={name} />
             </div>
             <div>
-                <h3>{author.name}</h3>
-                <p>
-                  {author.description}
-                </p>
-                <div className="flex">
+              <h3>{author.name}</h3>
+              <p>
+                {author.description}
+              </p>
+              {/* <div className="flex">
                   <div>
                     <GitHubButton
                       href={author.github}
@@ -41,7 +41,7 @@ export default class UserInfo extends Component {
                       Follow
                     </GitHubButton>
                   </div>
-                </div>
+                </div> */}
             </div>
           </div>
         </div>

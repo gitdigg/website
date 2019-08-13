@@ -93,7 +93,7 @@ export default class PostTemplate extends Component {
           </header>
           <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
           <CopyRight author={post.author} slug={slug} url={url} title={post.title} />
-          <div>
+          {/* <div>
             {' '}
             <a className="button twitter-button" href={twitterShare} target="_blank">
               Share on Twitter
@@ -102,10 +102,10 @@ export default class PostTemplate extends Component {
             <a className="button twitter-button" href={twitterUrl} target="_blank">
               Discuss on Twitter
             </a>
-          </div>
+          </div> */}
         </article>
 
-        <UserInfo name={post.author} />
+        {/* <UserInfo name={post.author} /> */}
         <div className="container">
           <div id="gitalk-container"></div>
           {/* <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} /> */}

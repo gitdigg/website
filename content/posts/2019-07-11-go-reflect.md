@@ -7,9 +7,9 @@ thumbnail: '../thumbnails/go.png'
 slug: go-reflect
 author: JayL
 categories:
+  - Popular	
   - go
 tags:
-  - Popular	
   - reflect
   - 图解反射
   - Go 编程

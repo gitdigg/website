@@ -7,6 +7,7 @@ published: true
 thumbnail: '../thumbnails/go.png'
 slug: go-tcpserver-graceful-shutdown
 categories:
+  - Popular
   - go
 tags:
   - graceful shutdown

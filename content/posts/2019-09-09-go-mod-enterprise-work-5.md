@@ -1,6 +1,6 @@
 ---
 date: 2019-09-09
-title: 'Go Module 工程化实践(五) : Go 1.13 私有代理服务的构建'
+title: 'Go 1.13  私有代理服务的构建'
 template: post
 thumbnail: '../thumbnails/go.png'
 slug: go-mod-enterprise-work-5
@@ -98,7 +98,7 @@ func ProxyHandler(wr http.ResponseWriter, req *http.Request) {
 
 ## 程序构建
 
-构建好以上的企业私有代理服务之后，就可以在`CI`阶段进行多阶段构建 Go 程序了。简单展示以下`Dockerfile`的样例，方便读者自行测试。
+构建好以上的企业私有代理服务之后，就可以在`CI`阶段进行多阶段构建 Go 程序了。简单展示一下样例`Dockerfile`，方便读者自行测试。
 
 ````
 FROM golang:1.13-alpine3.10 AS builder

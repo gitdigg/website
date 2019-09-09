@@ -1,5 +1,10 @@
 const quotations = [
     {
+        content: "所谓意义，大多经不起推敲。",
+        author: "JayL",
+        date: "2019/08/28",
+    },
+    {
         content: "这几天我好伤心。",
         author: "JayL",
         date: "2019/08/13",

@@ -21,12 +21,12 @@ const topics = [
         path: '/gitbook/',
         weight: 1,
     },
-    {
-        icon: go,
-        title: 'Go 工程化编程',
-        path: '/go-programming-in-engineering-way/',
-        weight: 2,
-    },
+    // {
+    //     icon: go,
+    //     title: 'Go 工程化编程',
+    //     path: '/go-programming-in-engineering-way/',
+    //     weight: 2,
+    // },
     {
         icon: go,
         title: 'Go 编程',

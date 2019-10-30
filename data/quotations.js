@@ -5,11 +5,6 @@ const quotations = [
         date: "2019/08/28",
     },
     {
-        content: "这几天我好伤心。",
-        author: "JayL",
-        date: "2019/08/13",
-    },
-    {
         content: "创作者的困境，往往自己满意的，总是缺少共鸣的。",
         author: "JayL",
         date: "2019/07/30",

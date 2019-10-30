@@ -14,7 +14,7 @@ export default class MainLayout extends Component {
     const { dark, notFound } = this.context
     const { children } = this.props
     let themeClass = ''
-    
+
     if (dark && !notFound) {
       themeClass = 'dark'
     } else if (notFound) {
@@ -30,6 +30,7 @@ export default class MainLayout extends Component {
         >
           <meta name="description" content={config.siteDescription} />
           <link rel="shortcut icon" type="image/png" href={favicon} />
+          <script data-ad-client="ca-pub-6092006931253729" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </Helmet>
         <Navigation title={config.siteTitle} menuLinks={config.menuLinks} />
         <main id="main-content">{children}</main>

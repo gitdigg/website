@@ -1,5 +1,5 @@
 ---
-date: 2012-01-05
+date: 2020-01-05
 title: 'Go 编程: 从 K8S 资源定义到 YAML 配置框架的实现'
 template: post
 thumbnail: '../thumbnails/go.png'

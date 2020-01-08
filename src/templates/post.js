@@ -105,7 +105,7 @@ export default class PostTemplate extends Component {
           </div> */}
         </article>
 
-        {/* <UserInfo name={post.author} /> */}
+        <UserInfo name={post.author} />
         <div className="container">
           <div id="gitalk-container"></div>
           {/* <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} /> */}

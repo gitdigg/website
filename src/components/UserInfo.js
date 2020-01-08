@@ -30,18 +30,18 @@ export default class UserInfo extends Component {
               <p>
                 {author.description}
               </p>
-              {/* <div className="flex">
-                  <div>
-                    <GitHubButton
-                      href={author.github}
-                      data-size="large"
-                      data-show-count="true"
-                      aria-label="Follow @liujianping on GitHub"
-                    >
-                      Follow
+              <div className="flex">
+                <div>
+                  <GitHubButton
+                    href={author.github}
+                    data-size="large"
+                    data-show-count="true"
+                    aria-label="Follow @liujianping on GitHub"
+                  >
+                    Follow
                     </GitHubButton>
-                  </div>
-                </div> */}
+                </div>
+              </div>
             </div>
           </div>
         </div>

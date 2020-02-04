@@ -18,6 +18,7 @@ export default class PostTemplate extends Component {
     var gitalk = new Gitalk({
       clientID: '381ef6e29bdffb9ad797',
       clientSecret: '558305235c247d8766aa9d051cfce259818c0b85',
+      accessToken: '1aa68eb64339e91f00e9e29ace0314e8c5bc3092',
       repo: 'website',
       owner: 'gitdigg',
       admin: ['liujianping'],
@@ -65,7 +66,7 @@ export default class PostTemplate extends Component {
           <title>{`${post.title} – ${config.siteTitle}`}</title>
 
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></link>
-          <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+          <script src="/js/gitalk.min.js"></script>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <article className="single container">

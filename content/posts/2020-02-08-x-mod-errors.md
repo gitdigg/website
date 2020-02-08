@@ -14,7 +14,7 @@ tags:
   - Go 编程
 ---
 
-Go 1.13 发布后，一直没有就错误(error)扩展包进行升级。借着版本升级，就 Go 错误(error)处理做一次总结。主要内容包括以下几点：
+Go 1.13 发布后，一直没有就错误(error)扩展包进行升级。借着版本升级，就 Go 错误(error)处理做一次知识梳理。主要内容包括：
 
 - **错误处理的基本过程**，回顾错误相关的基础知识
 - **错误处理的高级过程**，实际项目错误的处理过程
@@ -313,9 +313,14 @@ func ValueFrom(err error) int32 {
 	return 0
 }
 ````
-错误取值辅助函数中，有一段 `grpc/status`的代码，主要用于从 `grpc` 调用返回错误中取值。当然要在 `grpc`返回中取得错误码的值，前提`grpc`函数实现返回错误实现了，提供`GRPCStatus`函数接口。至于为什么，请参考[status.FromError](https://github.com/grpc/grpc-go/blob/master/status/status.go#L141)的实现说明。
+错误取值辅助函数中，有一段 `grpc/status`的代码，主要用于从 `grpc` 调用返回错误中取值。当然要在 `grpc`客户端调用中取得错误码值，前提`grpc`服务端函数实现中包装了错误码信息。
 
-所以，就错误码包装类型，再增加`GRPCStatus`接口函数的实现：
+GRPC如何C/S之间如何传递错误码，请参考：
+
+- 服务端如何实现错误码值的转译，请参考`GRPCStatus`函数接口。
+- 客户端如何读取错误码数据，请参考[status.FromError](https://github.com/grpc/grpc-go/blob/master/status/status.go#L141)的实现说明。
+
+所以，在错误码包装类型上再增加`GRPCStatus`接口函数的实现供GRPC服务端框架代码调用：
 
 ````go
 //GRPCStatus make codeErr support grpc status
@@ -323,7 +328,8 @@ func (ce *codeErr) GRPCStatus() *status.Status {
 	return status.New(codes.Code(ce.code.Value()), ce.err.Error())
 }
 ````
-以上就完成了从 GRPC 客户端获取错误码值的功能。
+
+以上就完成了从 GRPC 客户端获取服务端错误码值的功能。
 
 # 3. Go 1.13 升级与应用
 

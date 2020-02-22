@@ -1,6 +1,6 @@
 ---
 date: 2020-02-22
-title: 'Go 编程: 封装一个简单信号辅助包'
+title: 'Go 编程: 应用级抽象之信号管控'
 template: post
 thumbnail: '../thumbnails/go.png'
 slug: x-mod-sigtrap

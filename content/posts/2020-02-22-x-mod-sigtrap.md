@@ -14,9 +14,9 @@ tags:
   - Go 编程
 ---
 
-> 这是一个简单的应用级抽象案例。
+> 在软件开发过程中，我们常常做的一件事，就是编写公用库，或是基础库。这个过程可以称之为**应用级抽象**。应用级抽象的好处在于，接口主要面向应用，所以在适配度远远超过功能性接口。
 
-在 Go 语言中管控进程信号，非常简单。只需要简单的 3 行代码即可完成管控：
+以信号管控为例，在 Go 语言中管控进程信号，非常简单。只需要简单的 3 行代码即可完成管控：
 
 ````go
 package main
@@ -73,11 +73,11 @@ func main() {
 }
 ````
 
-具体的`Capture`实现也非常的简单，可以直接参考项目源码: [github.com/x-mod/sigtrap](https://github.com/x-mod/sigtrap).
+具体的`Capture`实现也非常的简单，可以直接参考项目源码: [github.com/x-mod/sigtrap](https://github.com/x-mod/sigtrap).很多类似这样简单工具包均没有太多的技术难度，封装主要目的就是在做**应用级抽象**。
 
-很多类似这样简单工具包均没有太多的技术难度，封装的原因在于，在开发过程中我们需要更加友好的**应用级抽象**而已。
+这个包主要用在我的另外一个应用级抽象包：[x-mod/routine](https://github.com/x-mod/routine)中。它主要抽象的是，`main`函数与`go routine`协程控制，具体实现功能以后抽时间分享，感兴趣的话可以参考项目源码。
 
-以下是我个人开源的一些工具包，欢迎参考：[github.com/x-mod/index](https://github.com/x-mod/index).
+更多**应用级抽象**工具包目录在这个仓库：[github.com/x-mod/index](https://github.com/x-mod/index).
 
 ## 基础库
 

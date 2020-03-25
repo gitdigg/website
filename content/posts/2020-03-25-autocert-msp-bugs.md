@@ -47,46 +47,51 @@ tags:
 package main
 
 import (
-    "log"
-    "net/http"
-    "github.com/x-mod/httpserver"
-    "github.com/x-mod/routine"
-    "github.com/x-mod/tlsconfig"
-    "golang.org/x/crypto/acme/autocert"
+	"context"
+	"io"
+	"log"
+	"net/http"
+	"syscall"
+
+	"github.com/x-mod/httpserver"
+	"github.com/x-mod/routine"
+	"github.com/x-mod/tlsconfig"
+	"golang.org/x/crypto/acme/autocert"
 )
 
-func main(){
-    certs := &autocert.Manager{
-        Prompt:     autocert.AcceptTOS,
-        HostPolicy: autocert.HostWhitelist("your-domain"),
-        Cache:      autocert.DirCache("your-local-certs-cache-dir"),
-        Email:      "your-email-address",
-    }
-    http := httpserver.New( 
-        httpserver.Address(":80"),
-        httpserver.HTTPHandler(certs.HTTPHandler(nil)),
-    )
-    https := httpserver.New(
-        httpserver.Address(":443"),
-        httpserver.TLSConfig(tlsconfig.New(
-            tlsconfig.GetCertificate(certs.GetCertificate),
-        )),
-        httpserver.HTTPHandler(
-            http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-                fmt.Fprintf(w, "hello autocert!")
-            }),
-        ),
-    )
-    if err := routine.Main(
-        context.TODO(),
-        routine.ExecutorFunc(https.Serve),
-        routine.Go(routine.ExecutorFunc(http.Serve)),
-        routine.Signal(syscall.SIGINT, routine.SigHandler(func() {
-            http.Close()
-            https.Close()
-        }))); err != nil {
-        log.Println(err)
-    }
+func main() {
+	certs := &autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist("your-domain"),
+		Cache:      autocert.DirCache("your-local-certs-cache-dir"),
+		Email:      "your-email-address",
+	}
+	srv := httpserver.New(
+		httpserver.Address(":80"),
+		httpserver.HTTPHandler(certs.HTTPHandler(nil)),
+	)
+
+	srvs := httpserver.New(
+		httpserver.Address(":443"),
+		httpserver.TLSConfig(tlsconfig.New(
+			tlsconfig.GetCertificate(certs.GetCertificate),
+		)),
+		httpserver.HTTPHandler(
+			http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+				io.WriteString(w, "Hello, world!\n")
+			}),
+		),
+	)
+	if err := routine.Main(
+		context.TODO(),
+		routine.ExecutorFunc(srvs.Serve),
+		routine.Go(routine.ExecutorFunc(srv.Serve)),
+		routine.Signal(syscall.SIGINT, routine.SigHandler(func() {
+			srv.Close()
+			srvs.Close()
+		}))); err != nil {
+		log.Println(err)
+	}
 }
     
 ````

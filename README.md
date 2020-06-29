@@ -1,31 +1,23 @@
-website
+GitDiG.com 网站
 ===
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b1ad05fe-7e0e-433e-a7d2-516ef31844df/deploy-status)](https://app.netlify.com/sites/elastic-johnson-b22bde/deploys)
 
-Personal website running on Gatsby, React, and Node.js. Fork from [taniarascia.com](https://github.com/taniarascia/taniarascia.com).
+本仓库是 GitDiG.com 网站的 `GatsbyJS` 实现源码。
 
-## Installation
+严格意义上来说这是个人前端的一个完整的项目实现，虽然做了很多次调整，但是在整体上实现与规划一定赶不上专业的前端人员。如果有前端的同学看到这个项目，非常欢迎就本项目提出改进意见，我会酌情处理。
 
-````bash
-$: git clone https://github.com/gitdigg/website
-$: website
-$: yarn && yarn run dev
+项目的内容目录`content`是通过 `submodule` 的方式进行独立维护管理。
+
+内容仓库的目录如下:
+
 ````
-Navigate to `localhost:8000`.
+content
+├── author
+├── doc
+├── images
+├── post
+├── thumbnails
+└── topic
+````
+希望 fork 该项目的同学，可以参考一下。
 
-## Features
-
-- Posts and pages in Markdown
-- Tags and categories
-- Night mode
-- DOS mode (404)
-- Code theme (starring [New Moon](https://taniarascia.github.io/new-moon))
-- Sass (starring [Primitive](https://taniarascia.github.io/primitive))
-
-## Content Author
-
-- [JayL](https://github.com/liujianping)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+项目的开发与发布操作，请仓库 `GatsbyJS` 官方文档。

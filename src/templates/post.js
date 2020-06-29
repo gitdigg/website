@@ -1,152 +1,117 @@
-import React, { Component } from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import Layout from '../layout'
-import UserInfo from '../components/UserInfo'
-import PostTags from '../components/PostTags'
-import SEO from '../components/SEO'
-import config from '../../data/SiteConfig'
-import { formatDate, editOnGithub } from '../utils/global'
-import Gitalk from 'gitalk'
-import 'gitalk/dist/gitalk.css'
-import CopyRight from '../components/CopyRight';
+import React from "react";
+import urljoin from "url-join";
+import { Helmet } from "react-helmet";
+import { Link } from 'gatsby';
+import { TwitterShareButton, TwitterIcon, WeiboShareButton, WeiboIcon, FacebookShareButton, FacebookIcon } from 'react-share';
+import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight } from "../components";
+import { useConfigs } from "../hooks";
+import 'gitalk/dist/gitalk.css';
+import loadable from '@loadable/component'
+// import GitalkComponent from "gitalk/dist/gitalk-component";
+// fixed yarn build error: Window is not defined at production build 
+const GitalkComponent = loadable(() => import("gitalk/dist/gitalk-component"))
 
-export default class PostTemplate extends Component {
-  componentDidMount() {
-    const { slug } = this.props.pageContext
-    var gitalk = new Gitalk({
-      clientID: '381ef6e29bdffb9ad797',
-      clientSecret: '558305235c247d8766aa9d051cfce259818c0b85',
-      accessToken: '1aa68eb64339e91f00e9e29ace0314e8c5bc3092',
-      repo: 'website',
-      owner: 'gitdigg',
-      admin: ['liujianping'],
-      id: slug,      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-  }
-
-  render() {
-    const { slug } = this.props.pageContext
-    const postNode = this.props.data.markdownRemark
-    const post = postNode.frontmatter
-    const disqusShortname = "gitdigg";
-    const disqusConfig = {
-      identifier: slug,
-      title: post.title,
-    };
-    let thumbnail
-
-    if (!post.id) {
-      post.id = slug
-    }
-    if (!post.category_id) {
-      post.category_id = config.postDefaultCategoryID
-    }
-    if (post.thumbnail) {
-      thumbnail = post.thumbnail.childImageSharp.fixed
-    }
-    const url = `${config.siteUrl}/${post.slug}`
-    const date = formatDate(post.date)
-    const githubLink = editOnGithub(post)
-    const twitterUrl = `https://twitter.com/search?q=${config.siteUrl}/${post.slug}/`
-    const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(post.title)}&url=${
-      config.siteUrl
-      }/${post.slug}/&via=gitdigg`
-
+export default function PostPage({ pageContext }) {
+    const { next, previous, node } = pageContext
+    const config = useConfigs()
+    const curl = urljoin(config.url, config.prefix, node.fields.slug)
     return (
-      <Layout>
-        <Helmet>
-          {post.tags &&
-            post.tags.map(tag => (
-              <meta property="article:tag" content={tag} />
-            ))}
-          <title>{`${post.title} – ${config.siteTitle}`}</title>
+        <Layout>
+            <Helmet>
+                <title>{`${node.frontmatter.title} | ${config.title}`}</title>
+                {
+                    previous &&
+                    <link rel="prev" title={previous.frontmatter.title} href={urljoin(config.url, config.prefix, previous.fields.slug)} />
+                }
+                {
+                    next &&
+                    <link rel="next" title={next.frontmatter.title} href={urljoin(config.url, config.prefix, next.fields.slug)} />
+                }
+            </Helmet>
+            <SEO keywords={node.frontmatter.keywords} postNode={node} postPath={node.fields.slug} postSEO />
+            <div className="container main">
+                <div className="columns mt-4">
+                    <div className="column is-three-quarters">
+                        <div className="box border is-radiusless is-shadowless">
+                            <div className="header">
+                                <nav className="level">
+                                    <div className="level-left">
+                                        <div className="level-item">
+                                            <span className="tag is-white">
+                                                <AuthorByCode code={node.frontmatter.author}></AuthorByCode>
+                                            </span>
+                                            {
+                                                node.frontmatter.topics.map(t => <span className="tag is-white"><TopicByCode code={t} /></span>)
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="level-right">
+                                        <div className="level-item">
+                                            <TwitterShareButton className={'mx-1'} url={curl}>
+                                                <TwitterIcon size={24} round={true}></TwitterIcon>
+                                            </TwitterShareButton>
+                                            <FacebookShareButton className={'mx-1'} url={curl}>
+                                                <FacebookIcon size={24} round={true}></FacebookIcon>
+                                            </FacebookShareButton>
+                                            <WeiboShareButton className={'mx-1'} url={curl}>
+                                                <WeiboIcon size={24} round={true}></WeiboIcon>
+                                            </WeiboShareButton>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <h1 className="title is-4 mb-2 has-text-centered ">
+                                    {node.frontmatter.title}
+                                </h1>
 
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"></link>
-          <script src="/js/gitalk.min.js"></script>
-        </Helmet>
-        <SEO postPath={slug} postNode={postNode} postSEO />
-        <article className="single container">
-          <header className={`single-header ${!thumbnail ? 'no-thumbnail' : ''}`}>
-            {thumbnail ? <Img fixed={post.thumbnail.childImageSharp.fixed} /> : null}
-            <div className="flex">
-              <h1>{post.title}</h1>
-              <div className="post-meta">
-                <time className="date">{date}</time>
-                /
-                <a className="twitter-link" href="https://github.com/liujianping">
-                  {post.author}
-                </a>
-                /
-                <a className="twitter-link" href={twitterShare}>
-                  分享
-                </a>
-                /
-                <a className="github-link" href={githubLink} target="_blank">
-                  编辑 ✏️
-                </a>
-                <PostTags tags={post.tags} />
-              </div>
+                            </div>
+                            <div className="article">
+                                <p className="has-text-centered">
+                                    <CopyRight share={node.frontmatter.share}></CopyRight>
+                                </p>
+                                {
+                                    node.frontmatter.description &&
+                                    <div className="mt-2 quote content">
+                                        <blockquote>{node.frontmatter.description}</blockquote>
+                                    </div>
+                                }
+                                <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
+                            </div>
+                        </div>
+                        <nav className="box border is-radiusless is-shadowless level">
+                            {
+                                previous &&
+                                <Link className="level-left has-text-centered" to={previous.fields.slug}>上一篇</Link>
+                            }
+                            {
+                                next &&
+                                <Link className="level-right has-text-centered" to={next.fields.slug}>下一篇</Link>
+                            }
+                        </nav>
+
+                        <div id="gitalk" className='box border is-radiusless is-shadowless'>
+                            <GitalkComponent options={{
+                                clientID: config.gitalk.clientID,
+                                clientSecret: config.gitalk.clientSecret,
+                                accessToken: config.gitalk.accessToken,
+                                repo: config.gitalk.repo,
+                                owner: config.gitalk.owner,
+                                admin: config.gitalk.admin,
+                                id: node.internal.contentDigest,      // Ensure uniqueness and length less than 50
+                                distractionFreeMode: false  // Facebook-like distraction free mode                    
+                            }} />
+                        </div>
+                    </div>
+                    <div className="column">
+                        <div className="box border is-radiusless is-shadowless">
+                            <Search />
+                        </div>
+                        {
+                            node.tableOfContents.length > 0 &&
+                            <div className="box border is-radiusless is-shadowless toc is-hidden-mobile" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />
+                        }
+                    </div>
+                </div>
             </div>
-          </header>
-          <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
-          <CopyRight author={post.author} slug={slug} url={url} title={post.title} />
-          {/* <div>
-            {' '}
-            <a className="button twitter-button" href={twitterShare} target="_blank">
-              Share on Twitter
-            </a>
-            {' '}
-            <a className="button twitter-button" href={twitterUrl} target="_blank">
-              Discuss on Twitter
-            </a>
-          </div> */}
-        </article>
-
-        <UserInfo name={post.author} />
-        <div className="container">
-          <div id="gitalk-container"></div>
-          {/* <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} /> */}
-        </div>
-      </Layout>
+        </Layout >
     )
-  }
 }
-
-/* eslint no-undef: "off" */
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-            markdownRemark(fields: {slug: {eq: $slug } }) {
-            html
-      timeToRead
-          excerpt
-      frontmatter {
-            title
-        thumbnail {
-            childImageSharp {
-          fixed(width: 150, height: 150) {
-            ...GatsbyImageSharpFixed
-          }
-          }
-        }
-        slug
-        date
-        author
-        categories
-        tags
-        template
-      }
-      fields {
-            nextTitle
-        nextSlug
-          prevTitle
-          prevSlug
-          slug
-          date
-        }
-      }
-    }
-  `

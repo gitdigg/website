@@ -1,52 +1,46 @@
-import React, { Component } from 'react'
-import Helmet from 'react-helmet'
-import ThemeContext from '../context/ThemeContext'
-import Layout from '../layout'
-import SEO from '../components/SEO'
-import config from '../../data/SiteConfig'
+import React from "react";
+import { Layout, Search } from "../components";
 
-export default class NotFoundPage extends Component {
-  static contextType = ThemeContext
-
-  componentDidMount() {
-    const { setNotFound } = this.context
-
-    setNotFound()
-  }
-
-  componentWillUnmount() {
-    const { setFound } = this.context
-
-    setFound()
-  }
-
-  render() {
+export default function NotFoundPage() {
     return (
-      <Layout>
-        <Helmet title={`Page not found – ${config.siteTitle}`} />
-        <SEO />
-        <div className="container">
-          <div className="text-center">
-            <h1>404</h1>
-          </div>
-          <p>
-            A fatal exception 0E has occurred at <span className="tania">0x74616e6961</span> in 404:
-            page not found.
-          </p>
-          <div className="list">
-            <p>
-              <span className="bullet">*</span> Click any link to terminate the current application.
-            </p>
-            <p>
-              <span className="bullet">*</span> Press ALT + F4 again to restart your browser. You
-              will lose any unsaved information in all tabs.
-            </p>
-          </div>
-          <p className="text-right">
-            Click any link to continue<span className="blink">&#9608;</span>
-          </p>
-        </div>
-      </Layout>
+        <Layout>
+            <section className="main hero is-light">
+                <div className="hero-body">
+                    <div className="container">
+                        <div className="columns is-mobile">
+                            <div className="column is-half is-offset-one-quarter">
+                                <Search />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div className="container">
+                <div className="columns">
+                    <div className="column is-half is-offset-one-quarter">
+                        <div class="box border is-radiusless is-shadowless my-6">
+                            <br />
+                            <h1 class="title has-text-centered ">
+                                404
+                            </h1>
+                            <br />
+                            <h2 class="subtitle has-text-centered ">
+                                页面不存在 。
+                            </h2>
+                            <br />
+                            <h2 class="subtitle is-6 has-text-centered ">
+                                可能是由于网站升级导致的路径变更。
+                                 <br />
+                                <br />
+                                请检索相关关键字查询。
+                            </h2>
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Layout>
     )
-  }
 }

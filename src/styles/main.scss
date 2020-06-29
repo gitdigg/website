@@ -1,24 +1,82 @@
-/*! Primitive
-  by Tania Rascia */
+@charset "utf-8";
+// If need, change your variables before importing Bulma
 
-// Configuration
-@import 'base/variables';
-@import 'base/mixins';
+$black-bis: #2D3748;
+$black-ter: #4A5568;
+$grey-darker:#718096;
+$grey-dark:#A0AEC0;
+$grey-light:#CBD5E0;
+$grey-lighter:#E2E8F0;
+$white-ter: #EDF2F7;
+$white-bis:	#F7FAFC;
 
-// Reset
-@import 'base/reset';
+$primary: #48BB78;
+$link:	#319795;
+$info:	#7F9CF5;
+$success: #68D391;
+$warning: #F6AD55;
+$danger: #FC8181;
 
-// Components
-@import 'components/scaffolding';
-@import 'components/helpers';
-@import 'components/buttons';
-@import 'components/forms';
-@import 'components/tables';
-@import 'components/navigation';
-@import 'components/layout';
-@import 'components/new-moon';
+$text: $black-ter;
+$gap: 128px;
+// $title-line-height: 1rem;
+@import "~bulma/bulma.sass";
 
-// Themes
+body {
+    background-color: $white-bis;
+}
 
-@import 'themes/dark';
-@import 'themes/404';
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-wrap-item {
+    flex-shrink: 0;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.main {
+    margin-top: $navbar-height;
+    padding-top: 1rem;
+}
+.border {
+    border: 1px solid $grey-lighter;
+}
+.header {
+    border-bottom: 2px solid $grey-darker;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+.toc {
+    position: sticky;
+    top: $navbar-height + 1rem;
+    right: 10px;
+    z-index: 10;
+    background-color:$white;
+    ul {
+        li {
+            padding-left: 1rem;
+        }
+    }
+}
+
+.topic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.bottom-line {
+    border-bottom: 1px solid $grey-lighter;
+}

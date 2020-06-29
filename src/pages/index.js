@@ -1,135 +1,73 @@
-import React, { Component } from 'react'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../layout'
-import PostListing from '../components/PostListing'
-import ProjectListing from '../components/ProjectListing'
-import TopicListing from '../components/TopicListing'
-import SEO from '../components/SEO'
-import UserInfo from '../components/UserInfo'
-import config from '../../data/SiteConfig'
-import projects from '../../data/projects'
-import topics from '../../data/topics'
-import quotations from '../../data/quotations'
+import React from "react";
+import { Helmet } from "react-helmet";
+import { Layout, SEO, Search, SideBar, Post, Pagination } from "../components";
+import { useConfigs, useTopics } from "../hooks";
+import { graphql } from 'gatsby';
 
-export default class Index extends Component {
-  render() {
-    const { data } = this.props
+export default function HomePage({ data }) {
+  const { title, keywords } = useConfigs()
+  const topics = useTopics()
+  topics.forEach(element => {
+    keywords.push(element.frontmatter.title)
+  });
 
-    let r = Math.random() * 100 + 1;
-    r = Math.floor(r % quotations.length);
-
-    const quotate = quotations[r]
-    const latestPostEdges = data.latest.edges
-    const popularPostEdges = data.popular.edges
-
-    return (
-      <Layout>
-        <Helmet title={`${config.siteTitle} – ${config.siteTitleShort}`} />
-        <SEO />
-        <div className="container">
-          <div className="quotations">
-            <blockquote className="quotation">
-              <p>
-                {quotate.content}
-              </p>
-              <cite>— {quotate.author} {quotate.date}</cite>
-            </blockquote>
+  return (
+    <Layout>
+      <Helmet title={title} />
+      <SEO keywords={keywords} />
+      <div className="container main">
+        <div className="columns mt-4">
+          <div className="column is-three-quarters">
+            {
+              data.allMarkdownRemark.edges.map((element, index) => {
+                return (<Post node={element.node} top={index === 0}></Post>)
+              })
+            }
+            <Pagination total={data.allMarkdownRemark.totalCount} pageSize={10} currentPage={0}></Pagination>
+          </div>
+          <div className="column">
+            <div class="box border is-radiusless is-shadowless">
+              <Search />
+            </div>
+            <SideBar />
           </div>
         </div>
-        <div className="container front-page">
-          <section className="section">
-            <h2 className="callouts">主题小册</h2>
-            <TopicListing topics={topics} max={2} more={true} />
-          </section>
-        </div>
-        <div className="container front-page">
-          <section className="section">
-            <h2>最新文章</h2>
-            <PostListing simple postEdges={latestPostEdges} />
-          </section>
-
-          <section className="section">
-            <h2>热门文章</h2>
-            <PostListing simple postEdges={popularPostEdges} />
-          </section>
-
-          <section className="section">
-            <h2>开源项目</h2>
-            <ProjectListing projects={projects} />
-          </section>
-        </div>
-        <UserInfo name={config.userName} />
-      </Layout>
-    )
-  }
+      </div>
+    </Layout>
+  )
 }
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    latest: allMarkdownRemark(
-      limit: 6
-      sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" }, published: {
-          in: [null, true]
-        } } }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            date
-          }
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            categories
-            thumbnail {
-              childImageSharp {
-                fixed(width: 150, height: 150) {
-                  ...GatsbyImageSharpFixed
-                }
+export const query = graphql`
+query HomePageQuery {
+  allMarkdownRemark(filter: { fields: { slug: { regex: "/post/" } } }, sort: { order: DESC, fields: frontmatter___date }, limit: 10) {
+    totalCount
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date
+          image {
+            childImageSharp {
+              fluid {
+                aspectRatio
+                base64
+                sizes
+                src
+                srcSet
               }
             }
-            date
-            template
+            publicURL
           }
+          description
+          keywords
+          sort
         }
-      }
-    }
-    popular: allMarkdownRemark(
-      limit: 6
-      sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { categories: { eq: "Popular" } published: {
-          in: [null, true]
-        } } }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            date
-          }
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            categories
-            thumbnail {
-              childImageSharp {
-                fixed(width: 150, height: 150) {
-                  ...GatsbyImageSharpFixed
-                }
-              }
-            }
-            date
-            template
-          }
-        }
+        excerpt
       }
     }
   }
+}
 `

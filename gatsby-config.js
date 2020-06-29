@@ -1,22 +1,50 @@
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/gatsby-config/
+ */
 const urljoin = require('url-join')
-const config = require('./data/SiteConfig')
 
 module.exports = {
-  pathPrefix: config.pathPrefix === '' ? '/' : config.pathPrefix,
   siteMetadata: {
-    siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+    title: "寄居蟹 - GitDiG.com",
+    titleAlt: "寄居蟹",
+    description: "一只寄居蟹留下的足迹 - Tracing My Memories",
+    keywords: [
+      "程序员",
+      "自媒体"
+    ],
+    image: "/logo.png",
+    url: "https://www.gitdig.com",
+    siteUrl: "https://www.gitdig.com",
+    prefix: "",
+    twitter: "gitdigg",
+    dateFromFormat: "YYYY/MM/DD",
+    author: "JayL",
+    creator: {
+      email: "gitdig.com@gmail.com",
+      location: "Shanghai, China",
+      name: "JayL",
+    },
+    gitalk: {
+      clientID: '381ef6e29bdffb9ad797',
+      clientSecret: '558305235c247d8766aa9d051cfce259818c0b85',
+      accessToken: '1aa68eb64339e91f00e9e29ace0314e8c5bc3092',
+      repo: 'website',
+      owner: 'gitdigg',
+      admin: ['liujianping'],
+    },
     rssMetadata: {
-      site_url: urljoin(config.siteUrl, config.pathPrefix),
-      feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
-      title: config.siteTitle,
-      description: config.siteDescription,
-      image_url: `${urljoin(config.siteUrl, config.pathPrefix)}/logos/logo-48.png`,
+      site_url: "https://www.gitdig.com",
+      feed_url: "https://www.gitdig.com/rss.xml",
+      title: "寄居蟹 - GitDiG.com",
+      description: "一只寄居蟹留下的足迹 - Tracing My Memories",
+      image_url: "https://www.gitdig.com/logo.png",
     },
   },
   plugins: [
-    'gatsby-plugin-sass',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-twitter',
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
@@ -28,159 +56,102 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'assets',
-        path: `${__dirname}/static/`,
+        path: `${__dirname}/content`,
       },
     },
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        pathToConfigModule: `${__dirname}/src/utils/typography.js`,
+        trackingId: "UA-141133293-1",
+        head: true,
       },
     },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'posts',
-        path: `${__dirname}/content/`,
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-embed-video`,
+          `gatsby-remark-responsive-iframe`,
           {
-            resolve: 'gatsby-remark-images',
+            resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 850,
+              maxWidth: 800,
             },
           },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              offsetY: `100`,
-              maintainCase: false,
-              removeAccents: true,
+              offsetY: 60,
             },
           },
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: config.googleAnalyticsID,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-nprogress',
-      options: {
-        color: config.themeColor,
-      },
-    },
-    'gatsby-plugin-sharp',
-    `gatsby-transformer-sharp`,
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: config.siteTitle,
-        short_name: config.siteTitleShort,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: 'minimal-ui',
-        icons: [
           {
-            src: '/logos/logo-48.png',
-            sizes: '48x48',
-            type: 'image/png',
-          },
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+            },
+          }
         ],
       },
     },
     {
-      resolve: 'gatsby-plugin-feed',
+      resolve: `gatsby-plugin-feed`,
       options: {
-        setup(ref) {
-          const ret = ref.query.site.siteMetadata.rssMetadata
-          ret.allMarkdownRemark = ref.query.allMarkdownRemark
-          ret.generator = 'JayL'
-          return ret
-        },
         query: `
-        {
-          site {
-            siteMetadata {
-              rssMetadata {
-                site_url
-                feed_url
+          {
+            site {
+              siteMetadata {
                 title
                 description
-                image_url
+                siteUrl
+                site_url: siteUrl
               }
             }
           }
-        }
-      `,
+        `,
         feeds: [
           {
-            serialize(ctx) {
-              const { rssMetadata } = ctx.query.site.siteMetadata
-              return ctx.query.allMarkdownRemark.edges.map(edge => ({
-                categories: edge.node.frontmatter.tags,
-                date: edge.node.fields.date,
-                title: edge.node.frontmatter.title,
-                description: edge.node.excerpt,
-                url: rssMetadata.site_url + edge.node.fields.slug,
-                guid: rssMetadata.site_url + edge.node.fields.slug,
-                custom_elements: [
-                  { 'content:encoded': edge.node.html },
-                  { author: config.userEmail },
-                ],
-              }))
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  // description: edge.node.excerpt,
+                  title: edge.node.frontmatter.title,
+                  date: edge.node.frontmatter.date,
+                  url: urljoin(site.siteMetadata.siteUrl, edge.node.fields.slug),
+                  guid: edge.node.internal.contentDigest,
+                })
+              })
             },
             query: `
-            {
-              allMarkdownRemark(
-                limit: 1000,
-                sort: { order: DESC, fields: [fields___date] },
-                filter: {
-                  frontmatter: {
-                    published: {
-                      in: [null, true]
-                    }
-                  }
-                },
-              ) {
-                edges {
-                  node {
-                    excerpt(pruneLength: 180)
-                    html
-                    timeToRead
-                    fields {
-                      slug
-                      date
-                    }
-                    frontmatter {
-                      title
-                      date
-                      categories
-                      tags
-                      template
+              {
+                allMarkdownRemark(limit: 1000, filter: {fields: {slug: {regex: "/^\/post\//"}}}, sort: {fields: frontmatter___date, order: DESC}) {
+                  edges {
+                    node {
+                      excerpt(pruneLength: 180)
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        topics
+                        keywords
+                        description
+                      }
+                      internal {
+                        contentDigest
+                      }
                     }
                   }
                 }
               }
-            }
-          `,
-            output: config.siteRss,
+            `,
+            output: "/rss.xml",
+            title: "GitDiG.com RSS Feed",
           },
         ],
       },

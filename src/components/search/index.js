@@ -12,11 +12,15 @@ export class Search extends React.Component {
     }
 
     componentWillMount() {
-        // this.addEventListener("keydown", this.onKeyPressed.bind(this));
+        if (typeof window !== 'undefined') {
+            window.addEventListener("keydown", this.onKeyPressed.bind(this));
+        }
     }
 
     componentWillUnmount() {
-        // this.removeEventListener("keydown", this.onKeyPressed.bind(this));
+        if (typeof window !== 'undefined') {
+            window.removeEventListener("keydown", this.onKeyPressed.bind(this));
+        }
     }
 
     onKeyPressed(e) {

@@ -11,7 +11,6 @@ export function SEO({ keywords, postNode, postPath, postSEO }) {
     let imageURI;
     let postURL;
     const config = useConfigs()
-    console.log(config)
     title = config.title;
     description = config.description;
     imageURI = config.image;

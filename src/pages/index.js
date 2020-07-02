@@ -20,7 +20,8 @@ export default function HomePage({ data }) {
           <div className="column is-three-quarters">
             {
               data.allMarkdownRemark.edges.map((element, index) => {
-                return (<Post node={element.node} top={index === 0}></Post>)
+                console.log("index:", index)
+                return (<Post node={element.node} top={index === 0} />)
               })
             }
             <Pagination total={data.allMarkdownRemark.totalCount} pageSize={10} currentPage={0}></Pagination>
@@ -39,7 +40,7 @@ export default function HomePage({ data }) {
 
 export const query = graphql`
 query HomePageQuery {
-  allMarkdownRemark(filter: { fields: { slug: { regex: "/post/" } } }, sort: { order: DESC, fields: frontmatter___date }, limit: 10) {
+  allMarkdownRemark(filter: { fields: { slug: { regex: "/^\/post\//" } } }, sort: { order: DESC, fields: frontmatter___date }, limit: 10) {
     totalCount
     edges {
       node {

@@ -33,6 +33,13 @@ body {
     flex-direction: column;
 }
 
+.flex-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
 .flex-wrap {
     display: flex;
     flex-wrap: wrap;

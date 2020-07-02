@@ -11,3 +11,4 @@ export * from "./post";
 export * from "./pagination";
 export * from "./sidebar";
 export * from "./copyright";
+export * from "./background";

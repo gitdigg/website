@@ -20,7 +20,6 @@ export default function HomePage({ data }) {
           <div className="column is-three-quarters">
             {
               data.allMarkdownRemark.edges.map((element, index) => {
-                console.log("index:", index)
                 return (<Post node={element.node} top={index === 0} />)
               })
             }

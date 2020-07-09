@@ -16,8 +16,8 @@ export function Pagination({ total, pageSize, currentPage }) {
                 {
                     pages.map((path, index) => {
                         return (
-                            <li>
-                                <Link className={'pagination-link ' + (currentPage === index ? 'is-current' : '')} to={path}>{index + 1}</Link>
+                            <li key={index}>
+                                <Link key={index} className={'pagination-link ' + (currentPage === index ? 'is-current' : '')} to={path}>{index + 1}</Link>
                             </li>
                         )
                     })

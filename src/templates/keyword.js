@@ -36,7 +36,7 @@ export default function KeywordPage({ pageContext, data }) {
                         </nav>
                         {
                             data.allMarkdownRemark.edges.map((element, index) => {
-                                return (<Post simple node={element.node}></Post>)
+                                return (<Post key={index} simple node={element.node}></Post>)
                             })
                         }
                         <p className="has-text-centered has-text-grey">已经到底了</p>

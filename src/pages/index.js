@@ -20,13 +20,13 @@ export default function HomePage({ data }) {
           <div className="column is-three-quarters">
             {
               data.allMarkdownRemark.edges.map((element, index) => {
-                return (<Post node={element.node} top={index === 0} />)
+                return (<Post key={index} node={element.node} top={index === 0} />)
               })
             }
             <Pagination total={data.allMarkdownRemark.totalCount} pageSize={10} currentPage={0}></Pagination>
           </div>
           <div className="column">
-            <div class="box border is-radiusless is-shadowless">
+            <div className="box border is-radiusless is-shadowless">
               <Search />
             </div>
             <SideBar />

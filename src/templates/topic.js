@@ -32,8 +32,8 @@ export default function TopicPage({ pageContext, data }) {
                             </ul>
                         </nav>
                         {
-                            data.allMarkdownRemark.edges.map((element) => {
-                                return (<Post simple node={element.node}></Post>)
+                            data.allMarkdownRemark.edges.map((element, index) => {
+                                return (<Post key={index} simple node={element.node}></Post>)
                             })
                         }
                         <p className="has-text-centered has-text-grey">已经到底了</p>

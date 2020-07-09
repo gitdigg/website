@@ -5,47 +5,47 @@ import { useConfigs, useKeywords } from "../hooks";
 import { graphql } from 'gatsby';
 
 export default function ArticlesPage({ data, pageContext }) {
-    const { currentPageNum, totalCount } = pageContext
-    const { title } = useConfigs()
+  const { currentPageNum, totalCount } = pageContext
+  const { title } = useConfigs()
 
-    const keywordCnts = useKeywords()
-    let keywords = []
-    keywordCnts.forEach(element => {
-        keywords.push(element.fieldValue)
-    });
+  const keywordCnts = useKeywords()
+  let keywords = []
+  keywordCnts.forEach(element => {
+    keywords.push(element.fieldValue)
+  });
 
-    return (
-        <Layout>
-            <Helmet title={title} />
-            <SEO keywords={keywords} />
-            <section className="main hero is-light">
-                <div className="hero-body">
-                    <div className="container">
-                        <div className="columns is-mobile">
-                            <div className="column is-half is-offset-one-quarter">
-                                <Search />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div className="container">
-                <div className="columns mt-4">
-                    <div className="column is-three-quarters">
-                        {
-                            data.allMarkdownRemark.edges.map((element, index) => {
-                                return (<Post node={element.node}></Post>)
-                            })
-                        }
-                        <Pagination total={totalCount} pageSize={10} currentPage={currentPageNum}></Pagination>
-                    </div>
-                    <div className="column">
-                        <SideBar />
-                    </div>
-                </div>
+  return (
+    <Layout>
+      <Helmet title={title} />
+      <SEO keywords={keywords} />
+      <section className="main hero is-light">
+        <div className="hero-body">
+          <div className="container">
+            <div className="columns is-mobile">
+              <div className="column is-half is-offset-one-quarter">
+                <Search />
+              </div>
             </div>
-        </Layout>
-    )
+          </div>
+        </div>
+      </section>
+      <div className="container">
+        <div className="columns mt-4">
+          <div className="column is-three-quarters">
+            {
+              data.allMarkdownRemark.edges.map((element, index) => {
+                return (<Post key={index} node={element.node}></Post>)
+              })
+            }
+            <Pagination total={totalCount} pageSize={10} currentPage={currentPageNum}></Pagination>
+          </div>
+          <div className="column">
+            <SideBar />
+          </div>
+        </div>
+      </div>
+    </Layout>
+  )
 }
 
 export const query = graphql`

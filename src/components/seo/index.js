@@ -20,8 +20,8 @@ export function SEO({ keywords, postNode, postPath, postSEO }) {
         description = postMeta.description
             ? postMeta.description
             : postNode.excerpt;
-        if (postMeta.image && postMeta.image.length > 0) {
-            imageURI = postMeta.image;
+        if (postMeta.image) {
+            imageURI = postMeta.image.publicURL;
         }
         postURL = urljoin(config.url, config.prefix, postPath);
     }

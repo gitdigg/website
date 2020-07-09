@@ -21,7 +21,6 @@ export function Topic({ node, className }) {
 export function TopicByCode({ code, className }) {
     const ts = useTopicMap()
     let t = ts['/topic/' + code + "/"]
-    console.log("TopicByCode:", t)
     return (
         <Topic node={t} className={className} />
     )

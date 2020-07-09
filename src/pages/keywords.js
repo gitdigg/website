@@ -37,7 +37,7 @@ export default function KeywordsPage() {
                         </nav>
                         <div class="box border is-radiusless is-shadowless">
                             {
-                                keywordCnts.map(element => <Keyword className={'mx-2 my-1'} name={element.fieldValue} />)
+                                keywordCnts.map(element => <Keyword key={element.fieldValue} className={'mx-2 my-1'} name={element.fieldValue} />)
                             }
                         </div>
 

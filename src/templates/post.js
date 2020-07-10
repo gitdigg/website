@@ -72,7 +72,7 @@ export default function PostPage({ pageContext }) {
                                 }
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
                                 <ContentAds/>
-                                <div className="flex-space-between">
+                                <div className="mt-4 flex-space-between">
                                     <div><Counter  url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads}/></div>
                                     <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
                                 </div>                                
@@ -82,7 +82,7 @@ export default function PostPage({ pageContext }) {
                             {
                                 previous &&
                                 <Link className="level-left has-text-centered" to={previous.fields.slug}>上一篇</Link>
-                            }
+                            }                            
                             {
                                 next &&
                                 <Link className="level-right has-text-centered" to={next.fields.slug}>下一篇</Link>
@@ -107,11 +107,11 @@ export default function PostPage({ pageContext }) {
                             <Search />                                                    
                         </div>
                         <div className="stickyRight">                                                                                                      
+                        <SquareAds/>
                         {
                             node.tableOfContents.length > 0 &&                            
                                 <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />                                                       
                         }
-                        <SquareAds/>
                         <div className="my-4">
                                 <Thumbup  url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs}/> 
                                 <Comment/>                                

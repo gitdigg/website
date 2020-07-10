@@ -8,10 +8,9 @@ export class SquareAds extends React.Component {
     render () {
     return (
         <ins className="adsbygoogle"
-            style={{ display: 'block' }}
+            style={{ display: 'block',  width: '300px', height: '250px'}}
             data-ad-client="ca-pub-6092006931253729"
             data-ad-slot="5966981359"
-            data-ad-format="auto"
             data-full-width-responsive="true" />
     );
   }

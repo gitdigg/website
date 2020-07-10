@@ -3,7 +3,7 @@ import urljoin from "url-join";
 import { Helmet } from "react-helmet";
 import { Link } from 'gatsby';
 import { TwitterShareButton, TwitterIcon, WeiboShareButton, WeiboIcon, FacebookShareButton, FacebookIcon } from 'react-share';
-import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight, Counter, Thumbup, Comment, SquareAds, ContentAds } from "../components";
+import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight, Counter, Thumbup, Comment, SquareAds, ContentAds, Recommend } from "../components";
 import { useConfigs } from "../hooks";
 import 'gitalk/dist/gitalk.css';
 import loadable from '@loadable/component'
@@ -107,7 +107,9 @@ export default function PostPage({ pageContext }) {
                             <Search />                                                    
                         </div>
                         <div className="stickyRight">                                                                                                      
-                        <SquareAds/>
+                        <Recommend className="my-4 p-2">
+                            <SquareAds/>
+                        </Recommend>
                         {
                             node.tableOfContents.length > 0 &&                            
                                 <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />                                                       

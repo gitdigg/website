@@ -49,6 +49,8 @@ query HomePageQuery {
         frontmatter {
           title
           date
+          thumbs
+          reads
           image {
             childImageSharp {
               fluid {

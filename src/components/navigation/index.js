@@ -41,6 +41,9 @@ export class Navigation extends Component {
                             <Link className="navbar-item" to="/articles">
                                 文章
                             </Link>
+                            <Link className="navbar-item" to="/examples">
+                                样例
+                            </Link>
                             <Social className="navbar-item" />
                         </div>
                     </div>

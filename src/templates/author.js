@@ -55,6 +55,8 @@ export const query = graphql`
                     code
                     title
                     date
+                    thumbs
+                    reads
                     image {
                         childImageSharp {
                         fluid {

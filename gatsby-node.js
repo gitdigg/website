@@ -219,6 +219,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                     email
                     name
                     share
+                    thumbs
+                    reads
                     title
                     image {
                         childImageSharp {

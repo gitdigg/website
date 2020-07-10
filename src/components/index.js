@@ -12,3 +12,6 @@ export * from "./pagination";
 export * from "./sidebar";
 export * from "./copyright";
 export * from "./background";
+export * from "./sample";
+export * from "./hits";
+export * from "./googleads";

@@ -61,6 +61,8 @@ export const query = graphql`
                 frontmatter {
                     title
                     date
+                    thumbs
+                    reads
                     image {
                         childImageSharp {
                         fluid {

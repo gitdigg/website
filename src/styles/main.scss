@@ -65,16 +65,26 @@ body {
     margin-bottom: 12px;
 }
 .toc {
-    position: sticky;
-    top: $navbar-height + 1rem;
-    right: 10px;
-    z-index: 10;
     background-color:$white;
     ul {
         li {
             padding-left: 1rem;
         }
     }
+}
+
+.flex-space-between{
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: center;
+}
+
+.stickyRight {
+    position: sticky;
+    top: $navbar-height + 1rem;
+    right: 10px;
+    z-index: 10;
 }
 
 .topic {
@@ -86,4 +96,14 @@ body {
 
 .bottom-line {
     border-bottom: 1px solid $grey-lighter;
+}
+
+.action {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.inline {
+    display: inline;
 }

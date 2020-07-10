@@ -10,6 +10,7 @@ export const useConfigs = () => {
             titleAlt
             keywords
             url
+            siteUrl
             twitter
             image 
             prefix

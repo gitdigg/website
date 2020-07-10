@@ -59,6 +59,8 @@ query($limit: Int!, $skip: Int!) {
         frontmatter {
           title
           date
+          thumbs
+          reads
           image {
             childImageSharp {
               fluid {

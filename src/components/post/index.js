@@ -1,35 +1,41 @@
 import React from "react";
 import { Link } from 'gatsby';
-// import { Picture } from "../picture";
+import urljoin from "url-join";
 import Img from 'gatsby-image';
 import { Keyword } from "../keyword";
+import { Thumbup } from "../hits";
 import moment from 'moment';
 import 'moment/locale/zh-cn';
+import { useConfigs } from "../../hooks";
 
 export function Post({ node, top, simple }) {
+    const config = useConfigs()
     const tm = moment(node.frontmatter.date).locale('zh-cn')
     const now = moment(new Date())
     let older = now.valueOf() - (86400 * 7 * 1000) > tm.valueOf()
     if (top) {
         return (
-            <Link to={node.fields.slug} class="box border is-radiusless is-shadowless">
-                <div className="header">
-                    <h1 className="title is-4 mb-2 has-text-centered ">
-                        {node.frontmatter.title}
-                    </h1>
-                    <p className="has-text-grey has-text-centered is-size-7">{older ? tm.format('YYYY/MM/DD') : tm.fromNow()}</p>
-                </div>
-                {
-                    node.frontmatter.image &&
-                    <figure className="my-2 image">
-                        <Img fluid={node.frontmatter.image.childImageSharp.fluid}></Img>
-                    </figure>
-                }
+            <div className="box border is-radiusless is-shadowless">
+                <Link to={node.fields.slug} >
+                    <div className="header">
+                        <h1 className="title is-4 mb-2 has-text-centered ">
+                            {node.frontmatter.title}
+                        </h1>
+                        <p className="has-text-grey has-text-centered is-size-7">{older ? tm.format('YYYY/MM/DD') : tm.fromNow()}</p>
+                    </div>
+                    {
+                        node.frontmatter.image &&
+                        <figure className="my-2 image">
+                            <Img fluid={node.frontmatter.image.childImageSharp.fluid}></Img>
+                        </figure>
+                    }
+                </Link>                
                 <p className={"mt-2"}>{node.excerpt}</p>
                 {
-                    node.frontmatter.keywords.map(k => <Keyword className={'mt-4 mr-2'} name={k} />)
+                    node.frontmatter.keywords &&
+                    node.frontmatter.keywords.map(k => <Keyword key={k} className={'mt-4 mr-2'} name={k} />)
                 }
-            </Link>
+            </div>
         )
     } else {
         return (
@@ -42,8 +48,9 @@ export function Post({ node, top, simple }) {
                             {node.frontmatter.description ? node.frontmatter.description : node.excerpt}
                         </div>
                     }
+                    <Thumbup inline url={urljoin(config.siteUrl, node.fields.slug)} className='is-light' initThumbs={node.frontmatter.thumbs}/>
                     {
-                        node.frontmatter.keywords.map(k => <Keyword className={'mr-1'} name={k} />)
+                        node.frontmatter.keywords.map(k => <Keyword key={k} className={'mr-1'} name={k} />)
                     }
                     <span className="has-text-grey-light is-size-7">{older ? tm.format('YYYY/MM/DD') : tm.fromNow()}</span>
                 </div>

@@ -21,7 +21,7 @@ Promise.all(
         await stream
             .resize(MAX_WIDTH)
             .jpeg({ quality: QUALITY })
-            .toFile(optimizedName)
+            .toFile(optimizedName) 
         return fs.rename(optimizedName, match)
     })
 )

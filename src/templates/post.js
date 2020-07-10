@@ -3,7 +3,7 @@ import urljoin from "url-join";
 import { Helmet } from "react-helmet";
 import { Link } from 'gatsby';
 import { TwitterShareButton, TwitterIcon, WeiboShareButton, WeiboIcon, FacebookShareButton, FacebookIcon } from 'react-share';
-import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight } from "../components";
+import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight, Counter, Thumbup, Comment, SquareAds, ContentAds } from "../components";
 import { useConfigs } from "../hooks";
 import 'gitalk/dist/gitalk.css';
 import loadable from '@loadable/component'
@@ -41,7 +41,7 @@ export default function PostPage({ pageContext }) {
                                                 <AuthorByCode code={node.frontmatter.author}></AuthorByCode>
                                             </span>
                                             {
-                                                node.frontmatter.topics.map(t => <span className="tag is-white"><TopicByCode code={t} /></span>)
+                                                node.frontmatter.topics.map((t, idx) => <span className="tag is-white" key={idx}><TopicByCode key={idx} code={t} /></span>)
                                             }
                                         </div>
                                     </div>
@@ -62,12 +62,8 @@ export default function PostPage({ pageContext }) {
                                 <h1 className="title is-4 mb-2 has-text-centered ">
                                     {node.frontmatter.title}
                                 </h1>
-
                             </div>
                             <div className="article">
-                                <p className="has-text-centered">
-                                    <CopyRight share={node.frontmatter.share}></CopyRight>
-                                </p>
                                 {
                                     node.frontmatter.description &&
                                     <div className="mt-2 quote content">
@@ -75,6 +71,11 @@ export default function PostPage({ pageContext }) {
                                     </div>
                                 }
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
+                                <ContentAds/>
+                                <div className="flex-space-between">
+                                    <div><Counter session className='is-light is-info' initSsns={node.frontmatter.reads}/></div>
+                                    <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
+                                </div>                                
                             </div>
                         </div>
                         <nav className="box border is-radiusless is-shadowless level">
@@ -103,12 +104,19 @@ export default function PostPage({ pageContext }) {
                     </div>
                     <div className="column">
                         <div className="box border is-radiusless is-shadowless">
-                            <Search />
+                            <Search />                                                    
                         </div>
+                        <div className="stickyRight">                                                                                                      
                         {
-                            node.tableOfContents.length > 0 &&
-                            <div className="box border is-radiusless is-shadowless toc is-hidden-mobile" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />
+                            node.tableOfContents.length > 0 &&                            
+                                <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />                                                       
                         }
+                        <SquareAds/>
+                        <div className="my-4">
+                                <Thumbup initThumbs={node.frontmatter.thumbs}/> 
+                                <Comment/>                                
+                        </div>    
+                        </div> 
                     </div>
                 </div>
             </div>

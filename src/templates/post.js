@@ -73,7 +73,7 @@ export default function PostPage({ pageContext }) {
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
                                 <ContentAds/>
                                 <div className="flex-space-between">
-                                    <div><Counter session className='is-light is-info' initSsns={node.frontmatter.reads}/></div>
+                                    <div><Counter  url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads}/></div>
                                     <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
                                 </div>                                
                             </div>
@@ -113,7 +113,7 @@ export default function PostPage({ pageContext }) {
                         }
                         <SquareAds/>
                         <div className="my-4">
-                                <Thumbup initThumbs={node.frontmatter.thumbs}/> 
+                                <Thumbup  url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs}/> 
                                 <Comment/>                                
                         </div>    
                         </div> 

@@ -107,9 +107,10 @@ export default function PostPage({ pageContext }) {
                             <Search />                                                    
                         </div>
                         <div className="stickyRight">                                                                                                      
-                        <Recommend className="my-4 p-2">
+                        <Recommend>
                             <SquareAds/>
                         </Recommend>
+                        <br />
                         {
                             node.tableOfContents.length > 0 &&                            
                                 <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />                                                       

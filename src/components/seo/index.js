@@ -134,11 +134,11 @@ export function SEO({ keywords, postNode, postPath, postSEO }) {
             <meta name="twitter:card" content={postSEO ? 'summary_large_image' : 'summary'} />
             <meta
                 name="twitter:creator"
-                content={config.twitter ? config.twitter : ""}
+                content={config.twitter ? '@' + config.twitter : ""}
             />
-            <meta name="twitter:title" content={title} />
-            <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
+            <meta property="twitter:title" content={title} />
+            <meta property="twitter:description" content={description} />
+            <meta property="twitter:image" content={image} />
         </Helmet>
     );
 }

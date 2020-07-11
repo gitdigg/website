@@ -13,7 +13,6 @@ export function Footer({ className }) {
                     <li><Link to="/about">关于</Link></li>
                 </ul>
                 <p className="has-text-centered has-text-grey-dark">copyright @ 2020 powered by <a target="_blank" rel="noreferrer" href={'https://netlify.com/'}>netlify</a></p>
-                <p className="has-text-centered has-text-grey-dark"><a className="has-text-grey-dark"href="https://www.sigmatraffic.com?ref=69424">Buy cheap website traffic</a></p>
             </nav>
         </footer>
     )

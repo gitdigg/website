@@ -7,7 +7,7 @@ import { useConfigs, useExamples } from "../hooks";
 export default function KeywordsPage() {
     const config = useConfigs()
     const examples = useExamples()
-    
+
     return (
         <Layout>
             <Helmet title={`样例 | ${config.title}`} />
@@ -17,7 +17,7 @@ export default function KeywordsPage() {
                     <div className="container">
                         <div className="columns is-mobile">
                             <div className="column is-half is-offset-one-quarter">
-                                <ContentAds />
+                                <Search />
                             </div>
                         </div>
                     </div>
@@ -33,9 +33,9 @@ export default function KeywordsPage() {
                             </ul>
                         </nav>
                         <div className={'columns is-multiline'}>
-                        {
-                            examples.map((node) => <div className="column is-one-quarter"><Sample node={node} className={''}/></div>)
-                        }
+                            {
+                                examples.map((node) => <div className="column is-one-quarter"><Sample node={node} className={''} /></div>)
+                            }
                         </div>
                     </div>
                     <div className="column">

@@ -13,16 +13,15 @@ export function SideBar() {
                 <Topic key={idx} className={'my-1 is-light'} node={topic}></Topic>
             )}</Recommend>
             <br />
-            <Recommend>
-                <SquareAds/>
-            </Recommend>
-            <br />
             <Recommend name={'微信公众号'}>
                 <figure className="image is-128x128 mx-2 my-3">
                     <img src={wexin} alt="wechat" />
-                </figure>   
-            </Recommend>         
-            
+                </figure>
+            </Recommend>
+            <br />
+            <Recommend>
+                <SquareAds />
+            </Recommend>
         </>
     )
 }

@@ -71,18 +71,18 @@ export default function PostPage({ pageContext }) {
                                     </div>
                                 }
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
-                                <ContentAds/>
+                                <ContentAds />
                                 <div className="mt-4 flex-space-between">
-                                    <div><Counter  url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads}/></div>
+                                    <div><Counter url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
                                     <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                         <nav className="box border is-radiusless is-shadowless level">
                             {
                                 previous &&
                                 <Link className="level-left has-text-centered" to={previous.fields.slug}>上一篇</Link>
-                            }                            
+                            }
                             {
                                 next &&
                                 <Link className="level-right has-text-centered" to={next.fields.slug}>下一篇</Link>
@@ -104,22 +104,18 @@ export default function PostPage({ pageContext }) {
                     </div>
                     <div className="column">
                         <div className="box border is-radiusless is-shadowless">
-                            <Search />                                                    
+                            <Search />
                         </div>
-                        <div className="stickyRight">                                                                                                      
-                        <Recommend>
-                            <SquareAds/>
-                        </Recommend>
-                        <br />
-                        {
-                            node.tableOfContents.length > 0 &&                            
-                                <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />                                                       
-                        }
-                        <div className="my-4">
-                                <Thumbup  url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs}/> 
-                                <Comment/>                                
-                        </div>    
-                        </div> 
+                        <div className="stickyRight">
+                            {
+                                node.tableOfContents.length > 0 &&
+                                <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />
+                            }
+                            <div className="my-4">
+                                <Thumbup url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs} />
+                                <Comment />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

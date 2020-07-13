@@ -45,6 +45,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
@@ -125,7 +126,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
-                  // description: edge.node.excerpt,
+                  description: edge.node.excerpt,
                   title: edge.node.frontmatter.title,
                   date: edge.node.frontmatter.date,
                   url: urljoin(site.siteMetadata.siteUrl, edge.node.fields.slug),

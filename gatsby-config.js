@@ -17,7 +17,7 @@ module.exports = {
     image: "/logo.png",
     url: "https://www.gitdig.com",
     siteUrl: "https://www.gitdig.com",
-    apiUrl: "http://localhost:8080",
+    apiUrl: "https://api.subscriber.one",
     prefix: "",
     twitter: "gitdigg",
     dateFromFormat: "YYYY/MM/DD",

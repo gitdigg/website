@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import urljoin from "url-join";
 import Img from 'gatsby-image';
 import { Keyword } from "../keyword";
-import { Thumbup } from "../hits";
+import { Thumbup } from '@gitdig/counter';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { useConfigs } from "../../hooks";
@@ -29,7 +29,7 @@ export function Post({ node, top, simple }) {
                             <Img fluid={node.frontmatter.image.childImageSharp.fluid}></Img>
                         </figure>
                     }
-                </Link>                
+                </Link>
                 <p className={"mt-2"}>{node.excerpt}</p>
                 {
                     node.frontmatter.keywords &&
@@ -48,7 +48,7 @@ export function Post({ node, top, simple }) {
                             {node.frontmatter.description ? node.frontmatter.description : node.excerpt}
                         </div>
                     }
-                    <Thumbup inline url={urljoin(config.siteUrl, node.fields.slug)} className='is-light' initThumbs={node.frontmatter.thumbs}/>
+                    <Thumbup baseURL={config.apiUrl} url={urljoin(config.siteUrl, node.fields.slug)} className='tag is-info is-light' initThumbs={node.frontmatter.thumbs} />
                     {
                         node.frontmatter.keywords.map(k => <Keyword key={k} className={'mr-1'} name={k} />)
                     }

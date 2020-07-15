@@ -13,5 +13,5 @@ export * from "./sidebar";
 export * from "./copyright";
 export * from "./background";
 export * from "./sample";
-export * from "./hits";
+export * from "./comment";
 export * from "./googleads";

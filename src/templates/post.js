@@ -3,8 +3,9 @@ import urljoin from "url-join";
 import { Helmet } from "react-helmet";
 import { Link } from 'gatsby';
 import { TwitterShareButton, TwitterIcon, WeiboShareButton, WeiboIcon, FacebookShareButton, FacebookIcon } from 'react-share';
-import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight, Counter, Thumbup, Comment, SquareAds, ContentAds, Recommend } from "../components";
+import { Layout, SEO, Search, TopicByCode, AuthorByCode, CopyRight, Comment, ContentAds } from "../components";
 import { useConfigs } from "../hooks";
+import { Counter, Thumbup } from '@gitdig/counter';
 import 'gitalk/dist/gitalk.css';
 import loadable from '@loadable/component'
 // import GitalkComponent from "gitalk/dist/gitalk-component";
@@ -73,7 +74,7 @@ export default function PostPage({ pageContext }) {
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
                                 <ContentAds />
                                 <div className="mt-4 flex-space-between">
-                                    <div><Counter url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
+                                    <div className='tag is-size-7 mr-2'>阅读 <Counter baseURL={config.apiUrl} url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
                                     <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
                                 </div>
                             </div>
@@ -112,7 +113,7 @@ export default function PostPage({ pageContext }) {
                                 <div className="box border is-radiusless is-shadowless is-hidden-mobile toc" dangerouslySetInnerHTML={{ __html: node.tableOfContents }} />
                             }
                             <div className="my-4">
-                                <Thumbup url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs} />
+                                <Thumbup baseURL={config.apiUrl} className={'button is-light is-info is-rounded mr-1'} url={urljoin(config.siteUrl, node.fields.slug)} initThumbs={node.frontmatter.thumbs} />
                                 <Comment />
                             </div>
                         </div>

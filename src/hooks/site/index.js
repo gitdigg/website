@@ -11,6 +11,7 @@ export const useConfigs = () => {
             keywords
             url
             siteUrl
+            apiUrl
             twitter
             image 
             prefix

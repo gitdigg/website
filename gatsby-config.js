@@ -17,6 +17,7 @@ module.exports = {
     image: "/logo.png",
     url: "https://www.gitdig.com",
     siteUrl: "https://www.gitdig.com",
+    apiUrl: "http://localhost:8080",
     prefix: "",
     twitter: "gitdigg",
     dateFromFormat: "YYYY/MM/DD",
@@ -159,7 +160,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "GitDiG.com RSS Feed",
+            title: "寄居蟹 - GitDiG.com",
           },
         ],
       },

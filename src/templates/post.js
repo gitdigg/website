@@ -74,7 +74,7 @@ export default function PostPage({ pageContext }) {
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
                                 <ContentAds />
                                 <div className="mt-4 flex-space-between">
-                                    <div className='tag is-size-7 mr-2'>阅读 <Counter baseURL={config.apiUrl} url={urljoin(config.siteUrl, node.fields.slug)} session className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
+                                    <div className='tag is-size-7 mr-2'>阅读 <Counter baseURL={config.apiUrl} url={urljoin(config.siteUrl, node.fields.slug)} hit className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
                                     <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
                                 </div>
                             </div>

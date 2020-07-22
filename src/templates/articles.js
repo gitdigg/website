@@ -30,7 +30,7 @@ export default function ArticlesPage({ data, pageContext }) {
         </div>
       </section>
       <div className="container">
-        <div className="columns mt-4">
+        <div className="columns mt-4 mx-4">
           <div className="column is-three-quarters">
             {
               data.allMarkdownRemark.edges.map((element, index) => {

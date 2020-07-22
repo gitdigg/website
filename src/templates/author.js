@@ -33,12 +33,15 @@ export default function AuthorPage({ pageContext, data }) {
                     dangerouslySetInnerHTML={{ __html: node.html }}
                 />
             </div>
-            {
-                data.allMarkdownRemark.edges.map((element, index) => {
-                    return (<Post key={index} simple node={element.node}></Post>)
-                })
-            }
-            <p className="has-text-centered has-text-grey">已经到底了</p>
+            <div className="mx-4">
+                {
+                    data.allMarkdownRemark.edges.map((element, index) => {
+                        return (<Post key={index} simple node={element.node}></Post>)
+                    })
+                }
+                <p className="has-text-centered has-text-grey">已经到底了</p>
+            </div>
+
         </LayoutWithSideBar>
     )
 }

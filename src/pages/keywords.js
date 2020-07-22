@@ -27,7 +27,7 @@ export default function KeywordsPage() {
                 </div>
             </section>
             <div className="container">
-                <div className="columns mt-4">
+                <div className="columns mt-4 mx-4">
                     <div className="column is-three-quarters">
                         <nav class="breadcrumb" aria-label="breadcrumbs">
                             <ul>

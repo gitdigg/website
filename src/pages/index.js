@@ -17,7 +17,7 @@ export default function HomePage({ data }) {
       <SEO keywords={keywords} />
       <div className="container main">
         <div className="columns mt-4">
-          <div className="column is-three-quarters">
+          <div className="column is-three-quarters mx-4">
             {
               data.allMarkdownRemark.edges.map((element, index) => {
                 return (<Post key={index} node={element.node} top={index === 0} />)

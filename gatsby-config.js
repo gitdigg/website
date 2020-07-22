@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: "寄居蟹 - GitDiG.com",
     titleAlt: "寄居蟹",
-    description: "一只寄居蟹留下的足迹 - Tracing My Memories",
+    description: "一只寄居蟹留下的足迹, 内容涉及：技术、读书、旅行 - Tracing My Memories",
     keywords: [
       "程序员",
       "自媒体"
@@ -39,7 +39,7 @@ module.exports = {
       site_url: "https://www.gitdig.com",
       feed_url: "https://www.gitdig.com/rss.xml",
       title: "寄居蟹 - GitDiG.com",
-      description: "一只寄居蟹留下的足迹 - Tracing My Memories",
+      description: "一只寄居蟹留下的足迹, 内容涉及：技术、读书、旅行 - Tracing My Memories",
       image_url: "https://www.gitdig.com/logo.png",
     },
   },

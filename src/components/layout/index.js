@@ -2,7 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import "../../styles/main.scss";
 import "../../styles/gitdig.css";
-import '../../styles/typo.css';
 import { Navigation } from "../navigation";
 import { Footer } from "../footer";
 import { SideBar } from "../sidebar";

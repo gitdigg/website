@@ -125,3 +125,7 @@ body {
 .inline {
     display: inline;
 }
+
+body, button, input, select, textarea {
+  font: 400 1rem/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif; 
+}

@@ -65,6 +65,9 @@ export default function PostPage({ pageContext }) {
                                 </h1>
                             </div>
                             <div className="article">
+                                <div className="mt-4 flex-space-between">
+                                    <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
+                                </div>
                                 {
                                     node.frontmatter.description &&
                                     <div className="mt-2 quote content">
@@ -72,11 +75,10 @@ export default function PostPage({ pageContext }) {
                                     </div>
                                 }
                                 <div className="content" dangerouslySetInnerHTML={{ __html: node.html }} />
-                                <ContentAds />
-                                <div className="mt-4 flex-space-between">
+                                <div className="mt-4">
                                     <div className='tag is-size-7 mr-2'>阅读 <Counter baseURL={config.apiUrl} url={urljoin(config.siteUrl, node.fields.slug)} hit className='is-light is-info' initSsns={node.frontmatter.reads} /></div>
-                                    <div><CopyRight share={node.frontmatter.share}></CopyRight></div>
                                 </div>
+                                <ContentAds />
                             </div>
                         </div>
                         <nav className="box border is-radiusless is-shadowless level">

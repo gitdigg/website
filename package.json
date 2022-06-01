@@ -51,7 +51,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-share": "^4.2.0",
-    "sharp": "^0.25.4",
+    "sharp": "^0.30.5",
     "styled-components": "^5.1.1",
     "svgtofont": "^2.0.0",
     "url-join": "^4.0.1"
